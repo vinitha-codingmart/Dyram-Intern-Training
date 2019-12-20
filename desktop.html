@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <title>
+        DyNews
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!--Favicon-->
+    <link rel="icon" href="news.png" type="image/png" sizes="16x16">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+        /* * {
+        outline: 2px solid red;
+    } */
+
+        hr {
+            border: 0;
+            clear: both;
+            display: block;
+            width: 90%;
+            background-color: darkgray;
+            height: 1px;
+        }
+
+        #Tops {
+            box-shadow: 0px 2px 5px gray;
+        }
+
+        input [type="text"]:focus,
+        textarea:focus,
+        input:focus,
+        select:focus {
+            outline: none;
+        }
+
+        #searchbox {
+            width: 500px;
+            background-color: gainsboro;
+            opacity: 0.7;
+            border-radius: 10px;
+            padding: 0px !important;
+        }
+
+        .p-2 {
+            padding-right: 10px !important;
+        }
+
+        .articles-div {
+            max-width: 700px;
+        }
+    </style>
+</head>
+
+<body onload="fetchNews()">
+
+    <!--Navbar-->
+    <nav id="Tops" class="navbar navbar-expand-sm bg-light navbar-light">
+
+        <ul class="navbar-nav">
+            <!--bars-->
+            <li style="padding-right: 20px;align-items:center;" class="nav-item">
+                <i class="fas fa-bars"></i>
+            </li>
+
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">
+                <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="logo"
+                    style="width:90px;">&nbsp;News
+            </a>
+
+            <!--Searchbar-->
+            <li class="nav-item">
+                <div id="searchbox" class="d-inline-flex p-3">
+                    <div class="p-2"><i class="fas fa-search"></i></div>&nbsp;&nbsp;
+                    <div id="searchbox-input" class="p-2"><input
+                            style="border: none; background: none; user-select: none;width: 400px;"
+                            placeholder="Search for topics, locations & sources" type="text"></div>&nbsp;&nbsp;
+                    <div class="p-2 ml-auto"><i class="fas fa-arrow-down"></i></div>
+                </div>
+            </li>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <i class="fas fa-ellipsis-v"></i>
+                </li>
+            </ul>
+        </ul>
+    </nav>
+
+    <!--Body of news-->
+
+    <!--Headlines-->
+    <div class="d-flex flex-row" style="max-width: 700px;">
+        <h4 id="Headlines" style="padding-left: 30px;padding-top: 30px;">Headlines</h4>
+        <a style="padding-top: 30px;" href="#Headlines" class="ml-auto">More Headlines</a>
+    </div>
+
+    <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+        <a class="articles" id="1" style="text-decoration: none;color: black;" href="">
+            <div class="d-flex flex-row p-4">
+                <div>
+                    <h5 style="font-weight: bold;" id="1title"></h5>
+                    <div style="font-size: 13px;" class="d-flex flex-row">
+                        <p id="1src" class="source"></p>&nbsp;·&nbsp;
+                        <p id="1time" class="time"></p>
+                    </div>
+                </div>
+                <img class="ml-auto" style="max-width: 200px;" id="1img" src="" alt="">
+            </div>
+        </a>
+    </div>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+    <!--Script-->
+    <script>
+        //Redirect to mobile site
+        window.setInterval(function () {
+            /// call your function here
+            if (screen.width <= 700) {
+                window.location = "index.html";
+            }
+        }, 3000);
+
+        //Fetch News
+        //Fetch news function
+        async function fetchNews() {
+            var url = 'https://newsapi.org/v2/top-headlines?' +
+                'country=us&' +
+                'apiKey=12ffabb2e2614914b84a71e2e18e26b8';
+            var req = new Request(url);
+            var requestObj;
+            var data;
+            await fetch(req).then(async function (response) {
+                requestObj = response.json();
+            });
+            await requestObj.then(function (jsonObj) { data = jsonObj; });
+            console.log(data);
+
+            for (var i = 1; i <= 1; i++) {
+                if (data.articles[i].urlToImage == null) {
+                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
+                }
+                else {
+                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
+                }
+                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
+                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
+                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
+                document.getElementById(i.toString() + "src").innerHTML = data.articles[i].source.name;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
