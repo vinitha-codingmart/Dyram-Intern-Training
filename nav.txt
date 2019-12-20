@@ -1,0 +1,36 @@
+<div class="d-flex flex-row">
+            <ul class="navbar-nav">
+                <!--bars-->
+                <div>
+                    <li style="padding-right: 20px;align-items:center;" class="nav-item">
+                        <i class="fas fa-bars"></i>
+                    </li>
+                </div>
+
+                <!-- Brand/logo -->
+                <div>
+                    <a class="navbar-brand" href="#">
+                        <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+                            alt="logo" style="width:90px;">&nbsp;News
+                    </a>
+                </div>
+
+                <!--Searchbar-->
+                <div>
+                    <li class="nav-item">
+                        <div id="searchbox" class="d-inline-flex p-3">
+                            <div class="p-2"><i class="fas fa-search"></i></div>&nbsp;&nbsp;
+                            <div id="searchbox-input" class="p-2"><input
+                                    style="border: none; background: none; user-select: none;width: 400px;"
+                                    placeholder="Search for topics, locations & sources" type="text"></div>&nbsp;&nbsp;
+                            <div class="p-2 ml-auto"><i class="fas fa-arrow-down"></i></div>
+                        </div>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-item">
+                        <i class="fas fa-ellipsis-v ml-auto"></i>
+                    </li>
+                </div>
+            </ul>
+        </div>
