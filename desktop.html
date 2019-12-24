@@ -141,6 +141,32 @@
             background-color: lightgray;
             border-radius: 50%;
         }
+
+        .appsIcon {
+            max-width: 40px;
+        }
+
+        #gapps {
+            border: 1px solid lightgray;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 3px lightgray;
+        }
+
+        .newsLink {
+            text-decoration: none;
+            color: black;
+        }
+
+        .newsLink:hover {
+            text-decoration: none;
+            color: black;
+            background-color: #f2f2f2;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
 
@@ -175,8 +201,8 @@
             </div>
 
             <div style="padding-top: 8px; padding-left:180px;">
-                <button class="menuButtons" style="border: none;"><i style="font-size: 15px;" id="appsGrid"
-                        class="fas fa-th"></i></button>
+                <button onclick="gappsOpen()" class="menuButtons" style="border: none;"><i style="font-size: 15px;"
+                        id="appsGrid" class="fas fa-th"></i></button>
             </div>
 
             <div>
@@ -397,7 +423,105 @@
 
         <!--Weather & Fact Check-->
         <div class="col-md-3" style="padding-left: 0;overflow: hidden;">
-            <div class="d-flex flex-column" style="padding-top: 95px;padding-right: 10px;">
+            <div id="weatherCol" class="d-flex flex-column" style="padding-top: 70px;padding-right: 10px;">
+                <!--Menu-->
+                <div id="gapps" style="display: none; max-width: 100% !important;max-height: 100% !important;">
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a class="newsLink" href="">
+                                    <center><img src="d.png" alt="" class="appsIcon">Account</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="gmail.png" alt="" class="appsIcon">Mail</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="drive.png" alt="" class="appsIcon">Drive</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="docs.png" alt="" class="appsIcon">Docs</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="sheets.png" alt="" class="appsIcon">Sheets</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="slides.png" alt="" class="appsIcon">Slides</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="cal.png" alt="" class="appsIcon">Calendar</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="chat.png" alt="" class="appsIcon">Chat</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="meet.png" alt="" class="appsIcon">Meet</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <hr>
+                    <br>
+
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="plus.png" alt="" class="appsIcon">Google+</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="sites.png" alt="" class="appsIcon">Sites</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="contacts.png" alt="" class="appsIcon">Contacts</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+
                 <!--Weather-->
                 <div style="border:1px solid lightgray; border-radius:10px;" class="container">
                     <div class="d-flex flex-row" style="padding-top: 20px;">
@@ -460,7 +584,8 @@
                         </div>
                         <div class="ml-auto">
                             <a style="font-size: 12px;"
-                                href="https://weather.com/weather/today/l/11.02,76.93?par=google">More on
+                                href="https://weather.com/weather/today/l/11.02,76.93?par=google">More
+                                on
                                 weather.com</a>
                         </div>
                     </div>
@@ -525,6 +650,20 @@
             }
             else {
                 x.style.display = "block"
+            }
+        }
+
+        //GApps Display
+        function gappsOpen() {
+            var x = document.getElementById("gapps");
+            var y = document.getElementById("weatherCol")
+            if (x.style.display == "block") {
+                x.style.display = "none";
+                y.style.paddingTop = "70px";
+            }
+            else {
+                x.style.display = "block"
+                y.style.paddingTop = "10px";
             }
         }
 
