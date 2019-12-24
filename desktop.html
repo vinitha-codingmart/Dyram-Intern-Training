@@ -109,6 +109,12 @@
             padding: 15px;
         }
 
+        .options:hover {
+            background: lightblue;
+            border-radius: 0px 10px 10px 0px;
+            color: blue;
+        }
+
         .options-link {
             text-decoration: none;
             color: #333333;
@@ -116,7 +122,14 @@
 
         .options-link:hover {
             text-decoration: none;
-            color: blue;
+        }
+
+        #bottomOpt {
+            padding: 15px;
+        }
+
+        #bottomOpt:hover {
+            background-color: none !important;
         }
     </style>
 </head>
@@ -130,7 +143,8 @@
         <div class="d-flex flex-row">
 
             <div style="width: 44px;padding-top: 8px;">
-                <i class="fas fa-bars"></i>
+                <button onclick="menuDisplay()" style="background: none;border: none;"><i
+                        class="fas fa-bars"></i></button>
             </div>
 
             <div>
@@ -151,7 +165,7 @@
             </div>
 
             <div style="padding-top: 8px; padding-left:180px;">
-                <i id="appsGrid" class="fas fa-th"></i>
+                <button style="border: none;background:none;"><i id="appsGrid" class="fas fa-th"></i></button>
             </div>
 
             <div>
@@ -166,7 +180,7 @@
     <div class="row">
 
         <!--Menu-->
-        <div class="col-md-2">
+        <div id="menu" class="col-md-2">
             <div class="d-flex flex-column">
                 <div class="options"><i class="far fa-newspaper"></i><a class="options-link" href="#">&nbsp;Top
                         Stories</a></div>
@@ -210,7 +224,7 @@
                 <div class="options"><a href="#" class="options-link">Get the iOS app</a></div>
                 <div class="options"><a href="#" class="options-link">Send Feedback</a></div>
                 <div class="options"><a href="#" class="options-link">Help</a></div>
-                <div class="options">
+                <div id="bottomOpt">
                     <div class="d-flex flex-row" style="font-size: 10px;">
                         <a href="#" class="options-link">Privacy&nbsp;·</a>
                         <a href="#" class="options-link">Terms&nbsp;·</a>
@@ -491,6 +505,17 @@
                 window.location = "index.html";
             }
         }, 3000);
+
+        //Menu Display
+        function menuDisplay() {
+            var x = document.getElementById("menu");
+            if (x.style.display == "block") {
+                x.style.display = "none";
+            }
+            else {
+                x.style.display = "block"
+            }
+        }
 
         //Fetch News
         //Fetch news function
