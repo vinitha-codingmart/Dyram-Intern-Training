@@ -131,6 +131,15 @@
         #bottomOpt:hover {
             background-color: none !important;
         }
+
+        .menuButtons {
+            background: none;
+        }
+
+        .menuButtons:hover {
+            background-color: lightgray;
+            border-radius: 50%;
+        }
     </style>
 </head>
 
@@ -143,7 +152,7 @@
         <div class="d-flex flex-row">
 
             <div style="width: 44px;padding-top: 8px;">
-                <button onclick="menuDisplay()" style="background: none;border: none;"><i
+                <button class="menuButtons" onclick="menuDisplay()" style="border: none;"><i
                         class="fas fa-bars"></i></button>
             </div>
 
@@ -165,7 +174,7 @@
             </div>
 
             <div style="padding-top: 8px; padding-left:180px;">
-                <button style="border: none;background:none;"><i id="appsGrid" class="fas fa-th"></i></button>
+                <button class="menuButtons" style="border: none;"><i id="appsGrid" class="fas fa-th"></i></button>
             </div>
 
             <div>
