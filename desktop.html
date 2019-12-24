@@ -21,7 +21,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
     <!--Favicon-->
-    <link rel="icon" href="news.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="images/news.png" type="image/png" sizes="16x16">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -167,13 +167,38 @@
         body {
             overflow-x: hidden;
         }
+
+        /*Affix not working*/
+        .affix {
+            top: 0;
+            width: 100%;
+        }
+
+        .affix-top {
+            width: 100%;
+        }
+
+        .affix-bottom {
+            position: absolute;
+            width: 100%;
+        }
+
+        /*Affix end*/
+
+        .headLink:hover {
+            text-decoration: none;
+        }
+
+        #menu {
+            padding-left: 10px;
+        }
     </style>
 </head>
 
 <body onload="fetchNews()">
 
     <!--Navbar-->
-    <nav id="Tops" class="navbar navbar-expand-sm bg-light navbar-light">
+    <nav id="Tops" class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
 
         <!--Original Navbar.......Refer to nav.txt file-->
         <div class="d-flex flex-row">
@@ -218,10 +243,12 @@
 
         <!--Menu-->
         <div id="menu" class="col-md-2">
-            <div class="d-flex flex-column">
-                <div class="options"><i class="far fa-newspaper"></i><a class="options-link" href="#">&nbsp;Top
+            <!--Affix <div class="affix affix-top affix-bottom"> -->
+            <div class="d-flex flex-column" style="padding-top: 80px;">
+                <div class="options"><i class="far fa-newspaper"></i><a class="options-link" href="#Headlines">&nbsp;Top
                         Stories</a></div>
-                <div class="options"><i class="far fa-user"></i><a class="options-link" href="#">&nbsp;For You</a>
+                <div class="options"><i class="far fa-user"></i><a class="options-link" href="#India">&nbsp;For
+                        You</a>
                 </div>
                 <div class="options"><i class="far fa-star"></i><a class="options-link" href="#">&nbsp;Following</a>
                 </div>
@@ -229,16 +256,17 @@
                         Searches</a></div>
                 <hr>
 
-                <div class="options"><i class="fas fa-flag"></i><a class="options-link" href="#">&nbsp;India</a>
+                <div class="options"><i class="fas fa-flag"></i><a class="options-link" href="#India">&nbsp;India</a>
                 </div>
                 <div class="options"><i class="fas fa-globe-americas"></i><a class="options-link"
-                        href="#">&nbsp;World</a>
+                        href="#World">&nbsp;World</a>
                 </div>
-                <div class="options"><i class="fas fa-map-marker-alt"></i><a class="options-link" href="#">&nbsp;Your
+                <div class="options"><i class="fas fa-map-marker-alt"></i><a class="options-link"
+                        href="#India">&nbsp;Your
                         local
                         news</a>
                 </div>
-                <div class="options"><i class="fas fa-city"></i><a class="options-link" href="#">&nbsp;Business</a>
+                <div class="options"><i class="fas fa-city"></i><a class="options-link" href="#World">&nbsp;Business</a>
                 </div>
                 <div class="options"><i class="fas fa-microchip"></i><a class="options-link"
                         href="#">&nbsp;Technology</a>
@@ -256,7 +284,7 @@
                 <div class="options"><a class="options-link" href="#">Language & Reigon <br>
                         <h6 style="font-weight: bold;">English (India)</h6>
                     </a></div>
-                <div class="options"><a href="#" class="options-link">Settings</a>Settings</div>
+                <div class="options"><a href="#" class="options-link">Settings</a></div>
                 <div class="options"><a href="#" class="options-link">Get the Android app</a></div>
                 <div class="options"><a href="#" class="options-link">Get the iOS app</a></div>
                 <div class="options"><a href="#" class="options-link">Send Feedback</a></div>
@@ -269,13 +297,14 @@
                     </div>
                 </div>
             </div>
+            <!--</div>-->
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-7" style="padding-top: 80px;">
             <!--Headlines-->
             <div class="d-flex flex-row" style="max-width: 600px;">
                 <h4 id="Headlines" style="padding-left: 30px;padding-top: 30px;">Headlines</h4>
-                <a style="padding-top: 30px;" href="#" class="ml-auto">More Headlines</a>
+                <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More Headlines</a>
             </div>
 
             <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
@@ -324,7 +353,7 @@
             <!--India-->
             <div class="d-flex flex-row" style="max-width: 600px;">
                 <h4 id="India" style="padding-left: 30px;padding-top: 30px;">India</h4>
-                <a style="padding-top: 30px;" href="#" class="ml-auto">More India</a>
+                <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More India</a>
             </div>
 
             <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
@@ -373,7 +402,7 @@
             <!--World-->
             <div class="d-flex flex-row" style="max-width: 600px;">
                 <h4 id="World" style="padding-left: 30px;padding-top: 30px;">World</h4>
-                <a style="padding-top: 30px;" href="#" class="ml-auto">More World</a>
+                <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More World</a>
             </div>
 
             <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
@@ -423,7 +452,7 @@
 
         <!--Weather & Fact Check-->
         <div class="col-md-3" style="padding-left: 0;overflow: hidden;">
-            <div id="weatherCol" class="d-flex flex-column" style="padding-top: 70px;padding-right: 10px;">
+            <div id="weatherCol" class="d-flex flex-column" style="padding-top: 150px;padding-right: 10px;">
                 <!--Menu-->
                 <div id="gapps" style="display: none; max-width: 100% !important;max-height: 100% !important;">
                     <div style="padding-left: 20px;" class="d-flex">
@@ -659,11 +688,11 @@
             var y = document.getElementById("weatherCol")
             if (x.style.display == "block") {
                 x.style.display = "none";
-                y.style.paddingTop = "70px";
+                y.style.paddingTop = "150px";
             }
             else {
                 x.style.display = "block"
-                y.style.paddingTop = "10px";
+                y.style.paddingTop = "65px";
             }
         }
 
