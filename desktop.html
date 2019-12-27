@@ -8,8 +8,8 @@
     </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1, shrink-to-fit=no">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
 
 
     <!-- Bootstrap CSS -->
@@ -192,461 +192,804 @@
         #menu {
             padding-left: 10px;
         }
+
+        /**/
+        /*Mobile Site*/
+        /**/
+
+        #mobile {
+            display: none;
+        }
+
+        .marticles {
+            max-width: 90%;
+        }
+
+        .marticles img {
+            border-radius: 20px;
+            max-width: 100%;
+            min-width: 100%;
+        }
+
+        .time {
+            font-size: 13px;
+            color: gray;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        #MTops {
+            box-shadow: 0px 2px 5px gray;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: blue;
+        }
+
+        .navbar-collapse.collapse.show {
+            max-height: 280px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
-<body onload="fetchNews()">
+<body onload="fetchNews()" style="overflow-x: hidden;">
 
-    <!--Navbar-->
-    <nav id="Tops" class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <div id="mobile" style="overflow :hidden;max-width: 90%;margin: 0px !important; padding: 0px !important;">
+        <!--Navbar-->
+        <nav id="MTops" class="navbar navbar-expand-md bg-light navbar-light fixed-top"
+            style="max-width: 100% !important; margin: 0% !important;">
 
-        <!--Original Navbar.......Refer to nav.txt file-->
-        <div class="d-flex flex-row">
+            <!-- Toggler/collapsibe Button -->
+            <button id="toggler" class="navbar-toggler mr-auto" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavbar"
+                style="padding-left: 0px !important;padding-right: 4px !important;margin-right: 0px !important;">
+                <span style="max-width: 60%;" class="navbar-toggler-icon"></span>
+            </button>
 
-            <div style="width: 44px;padding-top: 8px;">
-                <button class="menuButtons" onclick="menuDisplay()" style="border: none;"><i
-                        class="fas fa-bars"></i></button>
-            </div>
+            <!-- Brand -->
+            <a id="brand" class="navbar-brand mr-auto" href="#Tops" style="margin-right: 0px !important;"><img
+                    src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+                    alt="logo">&nbsp;News
+            </a>
 
-            <div>
-                <a class="navbar-brand" href="#">
-                    <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
-                        alt="logo" style="width:80px; padding: 0%;">&nbsp;News
-                </a>
-            </div>
+            <!--Search Icon-->
+            <button id="searchIcon" style="border: none;padding: 0%;background: none;" onclick="openSearch()">
+                <i class="fas fa-search"></i>
+            </button>
 
-            <div>
-                <div id="searchbox" style="margin-left: 90px;" class="d-inline-flex p-3">
-                    <div class="p-2"><i class="fas fa-search"></i></div>&nbsp;&nbsp;
-                    <div id="searchbox-input" class="p-2"><input
-                            style="border: none; background: none; user-select: none;width: 400px;"
-                            placeholder="Search for topics, locations & sources" type="text"></div>&nbsp;&nbsp;
-                    <div class="p-2 ml-auto"><i class="fas fa-arrow-down"></i></div>
-                </div>
-            </div>
-
-            <div style="padding-top: 8px; padding-left:180px;">
-                <button onclick="gappsOpen()" class="menuButtons" style="border: none;"><i style="font-size: 15px;"
-                        id="appsGrid" class="fas fa-th"></i></button>
-            </div>
-
-            <div>
-                <img class="rounded" src="images/d.png" alt="userAccLogo" style="max-width: 60px;padding-left: 20px;">
-            </div>
-        </div>
-
-    </nav>
-
-    <!--Body of news-->
-
-    <div class="row">
-
-        <!--Menu-->
-        <div id="menu" class="col-md-2">
-            <!--Affix <div class="affix affix-top affix-bottom"> -->
-            <div class="d-flex flex-column" style="padding-top: 80px;">
-                <div class="options"><i class="far fa-newspaper"></i><a class="options-link" href="#Headlines">&nbsp;Top
-                        Stories</a></div>
-                <div class="options"><i class="far fa-user"></i><a class="options-link" href="#India">&nbsp;For
-                        You</a>
-                </div>
-                <div class="options"><i class="far fa-star"></i><a class="options-link" href="#">&nbsp;Following</a>
-                </div>
-                <div class="options"><i class="far fa-search"></i><a class="options-link" href="#">&nbsp;Saved
-                        Searches</a></div>
-                <hr>
-
-                <div class="options"><i class="fas fa-flag"></i><a class="options-link" href="#India">&nbsp;India</a>
-                </div>
-                <div class="options"><i class="fas fa-globe-americas"></i><a class="options-link"
-                        href="#World">&nbsp;World</a>
-                </div>
-                <div class="options"><i class="fas fa-map-marker-alt"></i><a class="options-link"
-                        href="#India">&nbsp;Your
-                        local
-                        news</a>
-                </div>
-                <div class="options"><i class="fas fa-city"></i><a class="options-link" href="#World">&nbsp;Business</a>
-                </div>
-                <div class="options"><i class="fas fa-microchip"></i><a class="options-link"
-                        href="#">&nbsp;Technology</a>
-                </div>
-                <div class="options"><i class="fas fa-film"></i><a class="options-link" href="#">&nbsp;Entertainment</a>
-                </div>
-                <div class="options"><i class="fas fa-basketball-ball"></i><a class="options-link"
-                        href="#">&nbsp;Sports</a>
-                </div>
-                <div class="options"><i class="fas fa-flask"></i><a class="options-link" href="#">&nbsp;Science</a>
-                </div>
-                <div class="options"><i class="fas fa-dumbbell"></i><a class="options-link" href="#">&nbsp;Health</a>
-                </div>
-                <hr>
-                <div class="options"><a class="options-link" href="#">Language & Reigon <br>
-                        <h6 style="font-weight: bold;">English (India)</h6>
-                    </a></div>
-                <div class="options"><a href="#" class="options-link">Settings</a></div>
-                <div class="options"><a href="#" class="options-link">Get the Android app</a></div>
-                <div class="options"><a href="#" class="options-link">Get the iOS app</a></div>
-                <div class="options"><a href="#" class="options-link">Send Feedback</a></div>
-                <div class="options"><a href="#" class="options-link">Help</a></div>
-                <div id="bottomOpt">
-                    <div class="d-flex flex-row" style="font-size: 10px;">
-                        <a href="#" class="options-link">Privacy&nbsp;·</a>
-                        <a href="#" class="options-link">Terms&nbsp;·</a>
-                        <a href="#" class="options-link">About Google</a>
+            <!--Search Bar-->
+            <!--<input id="searchbar" style="display: none;" type="text" placeholder="Search News">-->
+            <div style="padding:0%;">
+                <div id="msearchbar" style="display: none;" class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span style="background:none;" class="input-group-text">
+                            <button onclick="bringback()"
+                                style="padding:0;border:none;background:none;box-shadow: none;">
+                                <i style="border: none; background: none; box-shadow: none;"
+                                    class="fas fa-arrow-left"></i>
+                            </button>
+                        </span>
+                        <span>
+                            <form action=""><input id="srch" style="width: 80%;" type="text" class="form-control"
+                                    placeholder="Search" name="search"></form>
+                        </span>
                     </div>
                 </div>
             </div>
-            <!--</div>-->
-        </div>
 
-        <div class="col-md-7" style="padding-top: 80px;">
+            <!--Sign in button-->
+            <!--
+            <button id="signinz" class="btn btn-primary" onclick="signin()">Sign
+                in</button>
+            -->
+            <img class="rounded" src="images/d.png" alt="userAccLogo" style="max-width: 80px;padding-right: 50px;">
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Headlines"><i class="far fa-newspaper"></i>&nbsp;Top Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#India"><i class="fas fa-user"></i>&nbsp;For you</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="far fa-star"></i>&nbsp;Favourites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-search"></i>&nbsp;Saved searches</a>
+                    </li>
+                    <li class="nav-item">
+                        <hr>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#India"><i class="fas fa-flag"></i>&nbsp;India</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#World"><i class="fas fa-globe-americas"></i>&nbsp;World</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#India"><i class="fas fa-map-marker-alt"></i>&nbsp;Your local news</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Business"><i class="fas fa-city"></i>&nbsp;Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Tech"><i class="fas fa-microchip"></i>&nbsp;Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Ent"><i class="fas fa-film"></i>&nbsp;Entertainment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Sports"><i class="fas fa-basketball-ball"></i>&nbsp;Sports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Science"><i class="fas fa-flask"></i>&nbsp;Science</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Health"><i class="fas fa-dumbbell"></i>&nbsp;Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <hr>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Language & Reigion <br>
+                            <h7><b>English(India)</b></h7>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="https://play.google.com/store/apps/details?id=com.google.android.apps.magazines&referrer=news.google.com?utm_source=web&utm_medium=menu&utm_campaign=side_menu_promotion">Get
+                            the Android app&nbsp;<i class="fas fa-directions fa-xs"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Send Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="https://support.google.com/googlenews?p=web&hl=en-IN&authuser=0#topic=7688381">Help&nbsp;<i
+                                class="fas fa-directions fa-xs"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <footer><a style="text-decoration: none;color: gray;font-size: 13px;"
+                                href="https://policies.google.com/privacy?hl=en-GB">Privacy</a>&nbsp;·&nbsp;<a
+                                style="text-decoration: none;color: gray;font-size: 13px;"
+                                href="https://policies.google.com/terms?hl=en-GB">Terms</a>&nbsp;·&nbsp;<a
+                                style="text-decoration: none;color: gray;font-size: 13px;"
+                                href="https://about.google/">About Google</a>
+                        </footer>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--    <i class="fas fa-ellipsis-v dropdown-toggle" data-toggle="dropdown"></i>    -->
+        <br><br><br><br>
+
+        <!--Body of News-->
+
+        <div id="mnews" style="max-width: 100% !important;">
+
             <!--Headlines-->
-            <div class="d-flex flex-row" style="max-width: 600px;">
-                <h4 id="Headlines" style="padding-left: 30px;padding-top: 30px;">Headlines</h4>
-                <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More Headlines</a>
+            <div class="container">
+                <h5 id="Headlines">Headlines</h5>
             </div>
 
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="1" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="1title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="1src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="1time" class="time"></p>
-                            </div>
+
+            <div style="margin: 30px ;">
+                <a class="marticles" id="1m" style="text-decoration: none;color: black;" href="">
+                    <img id="1mimg" src="" alt=""><br><br>
+                    <h6 id="1mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="1mtime" class="time"></p>
                         </div>
-                        <img id="1img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="2" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="2title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="2src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="2time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="2m" style="text-decoration: none;color: black;" href="">
+                    <img id="2mimg" src="" alt=""><br><br>
+                    <h6 id="2mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="2mtime" class="time"></p>
                         </div>
-                        <img id="2img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="3" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="3title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="3src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="3time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="3m" style="text-decoration: none;color: black;" href="">
+                    <img id="3mimg" src="" alt=""><br><br>
+                    <h6 id="3mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="3mtime" class="time"></p>
                         </div>
-                        <img id="3img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
+
+            <hr>
+
+            <div class="container">
+                <center><a
+                        href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZxYUdjU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
+                        more stories from Headlines</a></center>
+            </div>
+
+            <hr>
+
+            <br><br>
 
             <!--India-->
-            <div class="d-flex flex-row" style="max-width: 600px;">
-                <h4 id="India" style="padding-left: 30px;padding-top: 30px;">India</h4>
-                <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More India</a>
+            <div class="container">
+                <h5 id="India">India</h5>
             </div>
 
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="4" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="4title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="4src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="4time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="4m" style="text-decoration: none;color: black;" href="">
+                    <img id="4mimg" src="" alt=""><br><br>
+                    <h6 id="4mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="4mtime" class="time"></p>
                         </div>
-                        <img id="4img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="5" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="5title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="5src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="5time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="5m" style="text-decoration: none;color: black;" href="">
+                    <img id="5mimg" src="" alt=""><br><br>
+                    <h6 id="5mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="5mtime" class="time"></p>
                         </div>
-                        <img id="5img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="6" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="6title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="6src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="6time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="6m" style="text-decoration: none;color: black;" href="">
+                    <img id="6mimg" src="" alt=""><br><br>
+                    <h6 id="6mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="6mtime" class="time"></p>
                         </div>
-                        <img id="6img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
+
+            <hr>
+
+            <div class="container">
+                <center><a
+                        href="https://news.google.com/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRE55YXpBU0FtVnVLQUFQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
+                        more stories from India</a></center>
+            </div>
+
+            <hr>
+
+            <br><br>
 
             <!--World-->
-            <div class="d-flex flex-row" style="max-width: 600px;">
-                <h4 id="World" style="padding-left: 30px;padding-top: 30px;">World</h4>
-                <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More World</a>
+            <div class="container">
+                <h5 id="World">World</h5>
             </div>
 
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="7" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="7title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="7src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="7time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="7m" style="text-decoration: none;color: black;" href="">
+                    <img id="7mimg" src="" alt=""><br><br>
+                    <h6 id="7mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="7mtime" class="time"></p>
                         </div>
-                        <img id="7img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="8" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="8title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="8src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="8time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="8m" style="text-decoration: none;color: black;" href="">
+                    <img id="8mimg" src="" alt=""><br><br>
+                    <h6 id="8mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="8mtime" class="time"></p>
                         </div>
-                        <img id="8img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-            <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
-                <a class="articles" id="9" style="text-decoration: none;color: black;" href="">
-                    <div class="d-flex flex-row p-4">
-                        <div>
-                            <h5 style="font-weight: bold;" id="9title"></h5>
-                            <div style="font-size: 13px;" class="d-flex flex-row">
-                                <p id="9src" class="source"></p>&nbsp;·&nbsp;
-                                <p id="9time" class="time"></p>
-                            </div>
+            <div style="margin: 30px ;">
+                <a class="marticles" id="9m" style="text-decoration: none;color: black;" href="">
+                    <img id="9mimg" src="" alt=""><br><br>
+                    <h6 id="9mtitle"></h6>
+                    <div class="container">
+                        <div class="row">
+                            <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
+                            <p id="9mtime" class="time"></p>
                         </div>
-                        <img id="9img" class="ml-auto" style="max-width: 200px;" src="" alt="">
                     </div>
                 </a>
             </div>
-        </div>
-        <!--col-md-4 end-->
 
-        <!--Weather & Fact Check-->
-        <div class="col-md-3" style="padding-left: 0;overflow: hidden;">
-            <div id="weatherCol" class="d-flex flex-column" style="padding-top: 150px;padding-right: 10px;">
-                <!--Menu-->
-                <div id="gapps" style="display: none; max-width: 100% !important;max-height: 100% !important;">
-                    <div style="padding-left: 20px;" class="d-flex">
-                        <div class="d-flex flex-row">
-                            <div class="newsCont d-flex flex-column">
-                                <a class="newsLink" href="">
-                                    <center><img src="images/d.png" alt="" class="appsIcon">Account</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/gmail.png" alt="" class="appsIcon">Mail</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/drive.png" alt="" class="appsIcon">Drive</center>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div style="padding-left: 20px;" class="d-flex">
-                        <div class="d-flex flex-row">
-                            <div class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/docs.png" alt="" class="appsIcon">Docs</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/sheets.png" alt="" class="appsIcon">Sheets</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/slides.png" alt="" class="appsIcon">Slides</center>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div style="padding-left: 20px;" class="d-flex">
-                        <div class="d-flex flex-row">
-                            <div class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/cal.png" alt="" class="appsIcon">Calendar</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/chat.png" alt="" class="appsIcon">Chat</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/meet.png" alt="" class="appsIcon">Meet</center>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <hr>
-                    <br>
-
-                    <div style="padding-left: 20px;" class="d-flex">
-                        <div class="d-flex flex-row">
-                            <div class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/plus.png" alt="" class="appsIcon">Google+</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/sites.png" alt="" class="appsIcon">Sites</center>
-                                </a>
-                            </div>
-                            &nbsp;
-                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
-                                <a href="" class="newsLink">
-                                    <center><img src="images/contacts.png" alt="" class="appsIcon">Contacts</center>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <br>
-
-                <!--Weather-->
-                <div style="border:1px solid lightgray; border-radius:10px;" class="container">
-                    <div class="d-flex flex-row" style="padding-top: 20px;">
-                        <h6>Coimbatore</h6>
-                        <i class="fas fa-crosshairs ml-auto"></i>
-                    </div>
-                    <hr>
-                    <div class="d-flex flex-row">
-                        <div>
-                            Partly Cloudy <br>
-                            <h1>28° C</h1>
-                        </div>
-                        <div>
-                            <img src="images/sun.png" alt="sun" style="max-width: 170px; padding-left: 80px;">
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row">
-                        <div class="p-2">
-                            Today
-                            <br>
-                            <img src="images/sun.png" style="max-width: 30px;" alt=""><br>
-                            <b style="font-size: 13px;">29° C</b>
-                            <p style="font-size: 13px;">19° C</p>
-                        </div>
-                        <div class="p-2">
-                            Sat
-                            <br>
-                            <img src="images/sun.png" style="max-width: 30px;" alt="">
-                            <b style="font-size: 13px;">31° C</b>
-                            <p style="font-size: 13px;">19° C</p>
-                        </div>
-                        <div class="p-2">
-                            Sun
-                            <br>
-                            <img src="images/sun.png" style="max-width: 30px;" alt="">
-                            <b style="font-size: 13px;">32° C</b>
-                            <p style="font-size: 13px;">19° C</p>
-                        </div>
-                        <div class="p-2">
-                            Mon
-                            <br>
-                            <img src="images/sun.png" style="max-width: 30px;" alt="">
-                            <b style="font-size: 13px;">27° C</b>
-                            <p style="font-size: 13px;">19° C</p>
-                        </div>
-                        <div class="p-2">
-                            Tue
-                            <br>
-                            <img src="images/sun.png" style="max-width: 30px;" alt="">
-                            <b style="font-size: 13px;">26° C</b>
-                            <p style="font-size: 13px;">19° C</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex flex-row">
-                        <div class="d-flex flex-row">
-                            <a class="cfk" href="#">C</a>&nbsp;<p style="font-size: 12px;">|</p>&nbsp;
-                            <a class="cfk" href="#">F</a>&nbsp;<p style="font-size: 12px;">|</p>&nbsp;
-                            <a class="cfk" href="#">K</a>
-                        </div>
-                        <div class="ml-auto">
-                            <a style="font-size: 12px;"
-                                href="https://weather.com/weather/today/l/11.02,76.93?par=google">More
-                                on
-                                weather.com</a>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <!--Fact Check-->
-                <div style="background-color:#f2f2f2;padding:20px; border-radius: 4px;" class="d-flex flex-column">
-                    <div>
-                        In the news
-                    </div>
-                    <hr>
-                    <div style="display: flex; flex-wrap: wrap;">
-                        <a class="itn" href="#">Narendra Modi</a>
-                        <a class="itn" href="#">Sonia Gandhi</a>
-                        <a class="itn" href="#">Codingmart</a>
-                        <a class="itn" href="#">Supreme Court</a>
-                        <a class="itn" href="#">Basketball</a>
-                        <a class="itn" href="#">Vandalur Zoo</a>
-                        <a class="itn" href="#">Static Electricity</a>
-                        <a class="itn" href="#">CAB</a>
-                        <a class="itn" href="#">NRC</a>
-                        <a class="itn" href="#">Hero</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
-    <!--row end-->
 
+    <!--Mobile End-->
+
+
+    <div id="desktop">
+        <!--Navbar-->
+        <nav id="Tops" class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+
+            <!--Original Navbar.......Refer to nav.txt file-->
+            <div class="d-flex flex-row">
+
+                <div style="width: 44px;padding-top: 8px;">
+                    <button class="menuButtons" onclick="menuDisplay()" style="border: none;"><i
+                            class="fas fa-bars"></i></button>
+                </div>
+
+                <div>
+                    <a class="navbar-brand" href="#">
+                        <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+                            alt="logo" style="width:80px; padding: 0%;">&nbsp;News
+                    </a>
+                </div>
+
+                <div id="searchbox-div">
+                    <div id="searchbox" style="margin-left: 90px;" class="d-inline-flex p-3">
+                        <div class="p-2"><i class="fas fa-search"></i></div>&nbsp;&nbsp;
+                        <div id="searchbox-input" class="p-2"><input
+                                style="border: none; background: none; user-select: none;width: 400px;"
+                                placeholder="Search for topics, locations & sources" type="text"></div>&nbsp;&nbsp;
+                        <div class="p-2 ml-auto"><i class="fas fa-arrow-down"></i></div>
+                    </div>
+                </div>
+
+                <div style="padding-top: 8px; padding-left:180px;">
+                    <button onclick="gappsOpen()" class="menuButtons" style="border: none;"><i style="font-size: 15px;"
+                            id="appsGrid" class="fas fa-th"></i></button>
+                </div>
+
+                <div>
+                    <img class="rounded" src="images/d.png" alt="userAccLogo"
+                        style="max-width: 60px;padding-left: 20px;">
+                </div>
+            </div>
+
+        </nav>
+
+        <!--Body of news-->
+        <div class="row">
+
+            <!--Menu-->
+            <div id="menu" class="col-md-2">
+                <!--Affix <div class="affix affix-top affix-bottom"> -->
+                <div class="d-flex flex-column" style="padding-top: 80px;">
+                    <div class="options"><i class="far fa-newspaper"></i><a class="options-link"
+                            href="#Headlines">&nbsp;Top
+                            Stories</a></div>
+                    <div class="options"><i class="far fa-user"></i><a class="options-link" href="#India">&nbsp;For
+                            You</a>
+                    </div>
+                    <div class="options"><i class="far fa-star"></i><a class="options-link" href="#">&nbsp;Following</a>
+                    </div>
+                    <div class="options"><i class="far fa-search"></i><a class="options-link" href="#">&nbsp;Saved
+                            Searches</a></div>
+                    <hr>
+
+                    <div class="options"><i class="fas fa-flag"></i><a class="options-link"
+                            href="#India">&nbsp;India</a>
+                    </div>
+                    <div class="options"><i class="fas fa-globe-americas"></i><a class="options-link"
+                            href="#World">&nbsp;World</a>
+                    </div>
+                    <div class="options"><i class="fas fa-map-marker-alt"></i><a class="options-link"
+                            href="#India">&nbsp;Your
+                            local
+                            news</a>
+                    </div>
+                    <div class="options"><i class="fas fa-city"></i><a class="options-link"
+                            href="#World">&nbsp;Business</a>
+                    </div>
+                    <div class="options"><i class="fas fa-microchip"></i><a class="options-link"
+                            href="#">&nbsp;Technology</a>
+                    </div>
+                    <div class="options"><i class="fas fa-film"></i><a class="options-link"
+                            href="#">&nbsp;Entertainment</a>
+                    </div>
+                    <div class="options"><i class="fas fa-basketball-ball"></i><a class="options-link"
+                            href="#">&nbsp;Sports</a>
+                    </div>
+                    <div class="options"><i class="fas fa-flask"></i><a class="options-link" href="#">&nbsp;Science</a>
+                    </div>
+                    <div class="options"><i class="fas fa-dumbbell"></i><a class="options-link"
+                            href="#">&nbsp;Health</a>
+                    </div>
+                    <hr>
+                    <div class="options"><a class="options-link" href="#">Language & Reigon <br>
+                            <h6 style="font-weight: bold;">English (India)</h6>
+                        </a></div>
+                    <div class="options"><a href="#" class="options-link">Settings</a></div>
+                    <div class="options"><a href="#" class="options-link">Get the Android app</a></div>
+                    <div class="options"><a href="#" class="options-link">Get the iOS app</a></div>
+                    <div class="options"><a href="#" class="options-link">Send Feedback</a></div>
+                    <div class="options"><a href="#" class="options-link">Help</a></div>
+                    <div id="bottomOpt">
+                        <div class="d-flex flex-row" style="font-size: 10px;">
+                            <a href="#" class="options-link">Privacy&nbsp;·</a>
+                            <a href="#" class="options-link">Terms&nbsp;·</a>
+                            <a href="#" class="options-link">About Google</a>
+                        </div>
+                    </div>
+                </div>
+                <!--</div>-->
+            </div>
+
+            <div id="newsBody" class="col-md-7" style="padding-top: 80px;">
+                <!--Headlines-->
+                <div class="d-flex flex-row" style="max-width: 600px;">
+                    <h4 id="Headlines" style="padding-left: 30px;padding-top: 30px;">Headlines</h4>
+                    <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More Headlines</a>
+                </div>
+
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="1" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="1title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="1src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="1time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="1img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="2" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="2title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="2src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="2time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="2img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="3" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="3title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="3src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="3time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="3img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+
+                <!--India-->
+                <div class="d-flex flex-row" style="max-width: 600px;">
+                    <h4 id="India" style="padding-left: 30px;padding-top: 30px;">India</h4>
+                    <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More India</a>
+                </div>
+
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="4" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="4title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="4src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="4time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="4img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="5" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="5title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="5src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="5time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="5img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="6" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="6title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="6src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="6time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="6img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+
+                <!--World-->
+                <div class="d-flex flex-row" style="max-width: 600px;">
+                    <h4 id="World" style="padding-left: 30px;padding-top: 30px;">World</h4>
+                    <a style="padding-top: 30px;" href="#" class="ml-auto headLink">More World</a>
+                </div>
+
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="7" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="7title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="7src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="7time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="7img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="8" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="8title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="8src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="8time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="8img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="articles-div" style="margin: 30px ;border: 1px solid lightgray;border-radius: 10px;">
+                    <a class="articles" id="9" style="text-decoration: none;color: black;" href="">
+                        <div class="d-flex flex-row p-4">
+                            <div>
+                                <h5 style="font-weight: bold;" id="9title"></h5>
+                                <div style="font-size: 13px;" class="d-flex flex-row">
+                                    <p id="9src" class="source"></p>&nbsp;·&nbsp;
+                                    <p id="9time" class="time"></p>
+                                </div>
+                            </div>
+                            <img id="9img" class="ml-auto" style="max-width: 200px;" src="" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!--col-md-4 end-->
+
+            <!--Weather & Fact Check-->
+            <div id="facts" class="col-md-3" style="padding-left: 0;overflow: hidden;">
+                <div id="weatherCol" class="d-flex flex-column" style="padding-top: 150px;padding-right: 10px;">
+                    <!--Menu-->
+                    <div id="gapps" style="display: none; max-width: 100% !important;max-height: 100% !important;">
+                        <div style="padding-left: 20px;" class="d-flex">
+                            <div class="d-flex flex-row">
+                                <div class="newsCont d-flex flex-column">
+                                    <a class="newsLink" href="">
+                                        <center><img src="images/d.png" alt="" class="appsIcon">Account</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/gmail.png" alt="" class="appsIcon">Mail</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/drive.png" alt="" class="appsIcon">Drive</center>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div style="padding-left: 20px;" class="d-flex">
+                            <div class="d-flex flex-row">
+                                <div class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/docs.png" alt="" class="appsIcon">Docs</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/sheets.png" alt="" class="appsIcon">Sheets</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/slides.png" alt="" class="appsIcon">Slides</center>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div style="padding-left: 20px;" class="d-flex">
+                            <div class="d-flex flex-row">
+                                <div class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/cal.png" alt="" class="appsIcon">Calendar</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/chat.png" alt="" class="appsIcon">Chat</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/meet.png" alt="" class="appsIcon">Meet</center>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <br>
+
+                        <div style="padding-left: 20px;" class="d-flex">
+                            <div class="d-flex flex-row">
+                                <div class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/plus.png" alt="" class="appsIcon">Google+</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/sites.png" alt="" class="appsIcon">Sites</center>
+                                    </a>
+                                </div>
+                                &nbsp;
+                                <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                    <a href="" class="newsLink">
+                                        <center><img src="images/contacts.png" alt="" class="appsIcon">Contacts</center>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <!--Weather-->
+                    <div style="border:1px solid lightgray; border-radius:10px;" class="container">
+                        <div class="d-flex flex-row" style="padding-top: 20px;">
+                            <h6>Coimbatore</h6>
+                            <i class="fas fa-crosshairs ml-auto"></i>
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row">
+                            <div>
+                                Partly Cloudy <br>
+                                <h1>28° C</h1>
+                            </div>
+                            <div>
+                                <img src="images/sun.png" alt="sun" style="max-width: 170px; padding-left: 80px;">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <div class="p-2">
+                                Today
+                                <br>
+                                <img src="images/sun.png" style="max-width: 30px;" alt=""><br>
+                                <b style="font-size: 13px;">29° C</b>
+                                <p style="font-size: 13px;">19° C</p>
+                            </div>
+                            <div class="p-2">
+                                Sat
+                                <br>
+                                <img src="images/sun.png" style="max-width: 30px;" alt="">
+                                <b style="font-size: 13px;">31° C</b>
+                                <p style="font-size: 13px;">19° C</p>
+                            </div>
+                            <div class="p-2">
+                                Sun
+                                <br>
+                                <img src="images/sun.png" style="max-width: 30px;" alt="">
+                                <b style="font-size: 13px;">32° C</b>
+                                <p style="font-size: 13px;">19° C</p>
+                            </div>
+                            <div class="p-2">
+                                Mon
+                                <br>
+                                <img src="images/sun.png" style="max-width: 30px;" alt="">
+                                <b style="font-size: 13px;">27° C</b>
+                                <p style="font-size: 13px;">19° C</p>
+                            </div>
+                            <div class="p-2">
+                                Tue
+                                <br>
+                                <img src="images/sun.png" style="max-width: 30px;" alt="">
+                                <b style="font-size: 13px;">26° C</b>
+                                <p style="font-size: 13px;">19° C</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row">
+                            <div class="d-flex flex-row">
+                                <a class="cfk" href="#">C</a>&nbsp;<p style="font-size: 12px;">|</p>&nbsp;
+                                <a class="cfk" href="#">F</a>&nbsp;<p style="font-size: 12px;">|</p>&nbsp;
+                                <a class="cfk" href="#">K</a>
+                            </div>
+                            <div class="ml-auto">
+                                <a style="font-size: 12px;"
+                                    href="https://weather.com/weather/today/l/11.02,76.93?par=google">More
+                                    on
+                                    weather.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!--Fact Check-->
+                    <div style="background-color:#f2f2f2;padding:20px; border-radius: 4px;" class="d-flex flex-column">
+                        <div>
+                            In the news
+                        </div>
+                        <hr>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <a class="itn" href="#">Narendra Modi</a>
+                            <a class="itn" href="#">Sonia Gandhi</a>
+                            <a class="itn" href="#">Codingmart</a>
+                            <a class="itn" href="#">Supreme Court</a>
+                            <a class="itn" href="#">Basketball</a>
+                            <a class="itn" href="#">Vandalur Zoo</a>
+                            <a class="itn" href="#">Static Electricity</a>
+                            <a class="itn" href="#">CAB</a>
+                            <a class="itn" href="#">NRC</a>
+                            <a class="itn" href="#">Hero</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--row end-->
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -664,12 +1007,57 @@
     <!--Script-->
     <script>
         //Redirect to mobile site
+
+        /*
         window.setInterval(function () {
             /// call your function here
             if (screen.width <= 700) {
                 window.location = "index.html";
             }
         }, 3000);
+        */
+
+        //Mobile Code
+
+        /*
+        window.setInterval(function () {
+            /// call your function here
+            if (screen.width <= 700) {
+                var x = document.getElementById("menu");
+                x.style.display = "none";
+                var y = document.getElementById("facts");
+                y.style.display = "none";
+                var z = document.getElementById("searchbox-div");
+                z.style.display = "none";
+            }
+        }, 3000);
+
+        window.setInterval(function () {
+            /// call your function here
+            if (screen.width >= 700) {
+                var x = document.getElementById("menu");
+                x.style.display = "block";
+                var y = document.getElementById("facts");
+                y.style.display = "block";
+                var z = document.getElementById("searchbox-div");
+                z.style.display = "block";
+            }
+        }, 3000);
+        */
+        window.setInterval(function () {
+            /// call your function here
+            var x = document.getElementById("desktop");
+            var y = document.getElementById("mobile");
+            if (screen.width <= 700) {
+                x.style.display = "none";
+                y.style.display = "block";
+            }
+            if (screen.width >= 700) {
+                x.style.display = "block";
+                y.style.display = "none";
+            }
+        }, 1000);
+
 
         //Menu Display
         function menuDisplay() {
@@ -714,44 +1102,98 @@
             //Headlines
             for (var i = 1; i <= 4; i++) {
                 if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
+                    document.getElementById(i.toString() + "img").setAttribute("src", "images/noimage.jpg");
+                    document.getElementById(i.toString() + "mimg").setAttribute("src", "images/noimage.jpg");
                 }
                 else {
                     document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
+                    document.getElementById(i.toString() + "mimg").setAttribute("src", data.articles[i].urlToImage);
                 }
                 document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
                 document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
                 document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
                 document.getElementById(i.toString() + "src").innerHTML = data.articles[i].source.name;
+
+                //mobile
+
+                document.getElementById(i.toString() + "mtitle").innerHTML = data.articles[i].title;
+                document.getElementById(i.toString() + "m").setAttribute("href", data.articles[i].url);
+                document.getElementById(i.toString() + "mtime").innerHTML = data.articles[i].publishedAt;
             }
             //India
             for (var i = 4; i <= 7; i++) {
                 if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
+                    document.getElementById(i.toString() + "img").setAttribute("src", "images/noimage.jpg");
+                    document.getElementById(i.toString() + "mimg").setAttribute("src", "images/noimage.jpg");
                 }
                 else {
                     document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
+                    document.getElementById(i.toString() + "mimg").setAttribute("src", data.articles[i].urlToImage);
                 }
                 document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
                 document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
                 document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-                document.getElementById(i.toString() + "src").innerHTML = data.articles[i].source.name;
+                document.getElementById(i.toString() + "src").innerHTML = data.articles[i].source.name
+
+                //mobile
+
+                document.getElementById(i.toString() + "mtitle").innerHTML = data.articles[i].title;
+                document.getElementById(i.toString() + "m").setAttribute("href", data.articles[i].url);
+                document.getElementById(i.toString() + "mtime").innerHTML = data.articles[i].publishedAt;
             }
             //World
             for (var i = 7; i <= 10; i++) {
                 if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
+                    document.getElementById(i.toString() + "img").setAttribute("src", "images/noimage.jpg");
+                    document.getElementById(i.toString() + "mimg").setAttribute("src", "images/noimage.jpg");
                 }
                 else {
                     document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
+                    document.getElementById(i.toString() + "mimg").setAttribute("src", data.articles[i].urlToImage);
                 }
                 document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
                 document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
                 document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
                 document.getElementById(i.toString() + "src").innerHTML = data.articles[i].source.name;
+
+                //mobile
+
+                document.getElementById(i.toString() + "mtitle").innerHTML = data.articles[i].title;
+                document.getElementById(i.toString() + "m").setAttribute("href", data.articles[i].url);
+                document.getElementById(i.toString() + "mtime").innerHTML = data.articles[i].publishedAt;
             }
         }
 
+        //Mobile Script
+        //Search Bar
+        function openSearch() {
+            document.getElementById("msearchbar").style.display = "block";
+            document.getElementById("brand").style.display = "none";
+            document.getElementById("searchIcon").style.display = "none";
+            document.getElementById("toggler").style.display = "none";
+            document.getElementById("signinz").style.display = "none";
+        }
+
+        //Bring back
+        function bringback() {
+            document.getElementById("msearchbar").style.display = "none";
+            document.getElementById("brand").style.display = "block";
+            document.getElementById("searchIcon").style.display = "block";
+            document.getElementById("toggler").style.display = "block";
+            document.getElementById("signinz").style.display = "block";
+        }
+
+        //Restore
+        $(document).ready(function () {
+            $(".nav-link").click(function () {
+                $(".collapse").collapse('hide');
+            });
+        });
+
+        //Sign-in
+        function signin() {
+            window.location.href = "https://accounts.google.com/signin/v2/identifier?passive=1209600&continue=https%3A%2F%2Fnews.google.com%2F%3Fhl%3Den-IN%26gl%3DIN%26ceid%3DIN%3Aen&followup=https%3A%2F%2Fnews.google.com%2F%3Fhl%3Den-IN%26gl%3DIN%26ceid%3DIN%3Aen&hl=en-IN&flowName=GlifWebSignIn&flowEntry=ServiceLogin";
+        }
 
     </script>
 
