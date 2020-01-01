@@ -8,14 +8,17 @@
     </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1, shrink-to-fit=no">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
         integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
     <!--Favicon-->
     <link rel="icon" href="images/news.png" type="image/png" sizes="16x16">
@@ -26,604 +29,751 @@
     <!--Font awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="/styles/desktopResponsiveCss.css">
     <style>
         /* * {
         outline: 2px solid red;
     } */
-        @media only screen and (min-width: 992px) {
-            .nav-item {
-                display: none;
-            }
-
-            #searchbar {
-                display: block;
-            }
-
-            .articles,
-            .articles img,
-            .articles h6,
-            .articles .container .row i,
-            .articles .container .row p {
-                max-width: 30% !important;
-                min-width: 30% !important;
-                font-size: 80%;
-            }
-
-            /*Redirect to a different website using javascript*/
-
-        }
-
-        hr {
-            border: 0;
-            clear: both;
-            display: block;
-            width: 90%;
-            background-color: darkgray;
-            height: 1px;
-        }
-
-        .articles {
-            max-width: 100%;
-        }
-
-        .articles img {
-            border-radius: 20px;
-            max-width: 100%;
-            min-width: 100%;
-        }
-
-        .time {
-            font-size: 13px;
-            color: gray;
-        }
-
-        #Tops {
-            box-shadow: 0px 2px 5px gray;
-        }
-
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: blue;
-        }
-
-        .navbar-collapse.collapse.show {
-            max-height: 280px;
-            overflow-y: auto;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            box-shadow: none;
-            border: none;
-        }
-
-        .navbar-toggler {
-            border: none;
-        }
-
-        /*#collapsibleNavbar,
-        .collapse,
-        .navbar-collapse {
-            max-width: 280px;
-            overflow-x: auto;
-        }*/
-
-        /*
-        i.nav-item.fas.fa-search:hover {
-            color: blue;
-        }
-        */
     </style>
 </head>
 
 <body onload="fetchNews()">
+    <div id="desktop">
+        <!--Navbar-->
+        <nav id="Tops" class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
 
-    <!--Navbar-->
-    <nav id="Tops" class="navbar navbar-expand-md bg-light navbar-light fixed-top">
 
-        <!-- Toggler/collapsibe Button -->
-        <button id="toggler" class="navbar-toggler mr-auto" type="button" data-toggle="collapse"
-            data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!--Original Navbar.......Refer to nav.txt file-->
+            <!--Original Navbar.......Refer to navBar.txt file-->
+            <div class="MenuBar">
+                <button class="menuButtons" onclick="menuDisplay()" style="border: none;"><i
+                        class="fas fa-bars"></i></button>
 
-        <!-- Brand -->
-        <a id="brand" class="navbar-brand mr-auto" href="#Tops"><img
-                src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
-                alt="logo">&nbsp;News
-        </a>
+                <a class="navbar-brand" href="#">
+                    <img id="logoImage"
+                        src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+                        alt="logo">&nbsp;News
+                </a>
 
-        <!--Search Icon-->
-        <button class="mr-auto" id="searchIcon" style="border: none;padding: 0%;background: none;"
-            onclick="openSearch()">
-            <i class="fas fa-search"></i>
-        </button>
-
-        <!--Search Bar-->
-        <!--<input id="searchbar" style="display: none;" type="text" placeholder="Search News">-->
-        <div style="padding:0%;">
-            <div id="searchbar" style="display: none;" class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span style="background:none;" class="input-group-text">
-                        <button onclick="bringback()" style="padding:0;border:none;background:none;box-shadow: none;">
-                            <i style="border: none; background: none; box-shadow: none;" class="fas fa-arrow-left"></i>
-                        </button>
-                    </span>
-                    <span>
-                        <form action=""><input id="srch" style="width: 80%;" type="text" class="form-control"
-                                placeholder="Search" name="search"></form>
-                    </span>
+                <div id="ipad-searchbox-div">
+                    <div id="searchbarDiv" class="d-flex flex-row">
+                        <i id="searchbarSearch" class="fas fa-search"></i>
+                        <input type="text" name="search" id="searchInputBox"
+                            placeholder="Search for topics,locations & sources">
+                        <i id="searchBoxArrow" class="fas fa-arrow-down"></i>
+                    </div>
                 </div>
+
+                <div class="leftIcons-div">
+                    <button class="menuButtons leftIcons" style="border: none;" data-toggle="modal"
+                        data-target="#gappsModal">
+                        <i id="gapps-icon" id="appsGrid" class="fas fa-th"></i>
+                    </button>
+
+                    <button class="leftIcons" style="border: none;background: none;" data-toggle="modal"
+                        data-target="#myModal">
+                        <img id="userImage" class="rounded" src="images/user.png" alt="userAccLogo">
+                    </button>
+
+
+                    <button id="logout" class="btn btn-primary leftIcons" style="border-radius: 50%;"
+                        data-toggle="modal" data-target="#logoutModal"></button>
+                </div>
+            </div>
+
+        </nav>
+
+        <!--Logout modal-->
+        <div class="modal fade" id="logoutModal" role="dialog" style="width: 100% !important;">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="logoutmodalClose" type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <button id="logoutModalImage" class="btn btn-info"></button>
+                            <br>
+                            <h6 id="logoutModalName"></h6>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="signOut()"
+                            value="Signin">Sign-Out</button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!--Sign in button-->
-        <button id="signinz" class="btn btn-primary" onclick="signin()">Sign in</button>
+        <!--Logout modal end-->
 
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#Headlines"><i class="far fa-newspaper"></i>&nbsp;Top Stories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#India"><i class="fas fa-user"></i>&nbsp;For you</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="far fa-star"></i>&nbsp;Favourites</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-search"></i>&nbsp;Saved searches</a>
-                </li>
-                <li class="nav-item">
+
+        <!--Gapps modal-->
+        <div class="modal right fade" id="gappsModal" role="dialog" style="width: 100% !important;">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a class="newsLink" href="">
+                                    <center><img src="images/user.png" alt="" class="appsIcon">Account</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/gmail.png" alt="" class="appsIcon">Mail</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/drive.png" alt="" class="appsIcon">Drive</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/docs.png" alt="" class="appsIcon">Docs</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/sheets.png" alt="" class="appsIcon">Sheets</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/slides.png" alt="" class="appsIcon">Slides</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/cal.png" alt="" class="appsIcon">Calendar</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/chat.png" alt="" class="appsIcon">Chat</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/meet.png" alt="" class="appsIcon">Meet</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
                     <hr>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#India"><i class="fas fa-flag"></i>&nbsp;India</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#World"><i class="fas fa-globe-americas"></i>&nbsp;World</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#India"><i class="fas fa-map-marker-alt"></i>&nbsp;Your local news</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Business"><i class="fas fa-city"></i>&nbsp;Business</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Tech"><i class="fas fa-microchip"></i>&nbsp;Technology</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Ent"><i class="fas fa-film"></i>&nbsp;Entertainment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Sports"><i class="fas fa-basketball-ball"></i>&nbsp;Sports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Science"><i class="fas fa-flask"></i>&nbsp;Science</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Health"><i class="fas fa-dumbbell"></i>&nbsp;Health</a>
-                </li>
-                <li class="nav-item">
-                    <hr>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Language & Reigion <br>
-                        <h7><b>English(India)</b></h7>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                        href="https://play.google.com/store/apps/details?id=com.google.android.apps.magazines&referrer=news.google.com?utm_source=web&utm_medium=menu&utm_campaign=side_menu_promotion">Get
-                        the Android app&nbsp;<i class="fas fa-directions fa-xs"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Send Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                        href="https://support.google.com/googlenews?p=web&hl=en-IN&authuser=0#topic=7688381">Help&nbsp;<i
-                            class="fas fa-directions fa-xs"></i></a>
-                </li>
-                <li class="nav-item">
-                    <footer><a style="text-decoration: none;color: gray;font-size: 13px;"
-                            href="https://policies.google.com/privacy?hl=en-GB">Privacy</a>&nbsp;·&nbsp;<a
-                            style="text-decoration: none;color: gray;font-size: 13px;"
-                            href="https://policies.google.com/terms?hl=en-GB">Terms</a>&nbsp;·&nbsp;<a
-                            style="text-decoration: none;color: gray;font-size: 13px;"
-                            href="https://about.google/">About Google</a>
-                    </footer>
-                </li>
-            </ul>
+                    <br>
+
+                    <div style="padding-left: 20px;" class="d-flex">
+                        <div class="d-flex flex-row">
+                            <div class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/plus.png" alt="" class="appsIcon">Google+</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/sites.png" alt="" class="appsIcon">Sites</center>
+                                </a>
+                            </div>
+                            &nbsp;
+                            <div style="padding-left: 40px;" class="newsCont d-flex flex-column">
+                                <a href="" class="newsLink">
+                                    <center><img src="images/contacts.png" alt="" class="appsIcon">Contacts</center>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </nav>
 
-    <!--    <i class="fas fa-ellipsis-v dropdown-toggle" data-toggle="dropdown"></i>    -->
-    <br><br><br><br>
+        <!--Register modal-->
+        <div class="modal fade" id="myModal" role="dialog" style="width: 100% !important;">
+            <div class="modal-dialog">
 
-    <!--Body of News-->
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="modalClose" type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <table>
+                                <tr>
+                                    <td>Email : </td>
+                                    <td><input type="email" name="" id="email"></td>
+                                </tr>
+                                <tr>
+                                    <td>Password : </td>
+                                    <td><input type="password" name="" id="password"></td>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="validate()"
+                            value="Register">Register</button>
+                        <button type="button" class="btn btn-primary" onclick="signIn()" value="Signin">Sign-In</button>
+                    </div>
+                </div>
 
-    <!--Headlines-->
-    <div class="container">
-        <h5 id="Headlines">Headlines</h5>
-    </div>
+            </div>
+        </div>
 
 
-    <div style="margin: 30px ;">
-        <a class="articles" id="1" style="text-decoration: none;color: black;" href="">
-            <img id="1img" src="" alt=""><br><br>
-            <h6 id="1title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="1time" class="time"></p>
+        <br>
+        <br>
+
+        <!--Body of news-->
+
+        <div id="news">
+            <!--Menu-->
+            <div id="menu" class="menu-div">
+                <div class="options"><i class="far fa-newspaper"></i><a class="options-link" href="#Headlines">&nbsp;Top
+                        Stories</a></div>
+                <div class="options"><i class="far fa-user"></i><a class="options-link" href="#India">&nbsp;For
+                        You</a>
+                </div>
+                <div class="options"><i class="far fa-star"></i><a class="options-link" href="#">&nbsp;Following</a>
+                </div>
+                <div class="options"><i class="far fa-search"></i><a class="options-link" href="#">&nbsp;Saved
+                        Searches</a></div>
+                <hr>
+
+                <div class="options"><i class="fas fa-flag"></i><a class="options-link" href="#India">&nbsp;India</a>
+                </div>
+                <div class="options"><i class="fas fa-globe-americas"></i><a class="options-link"
+                        href="#World">&nbsp;World</a>
+                </div>
+                <div class="options"><i class="fas fa-map-marker-alt"></i><a class="options-link"
+                        href="#India">&nbsp;Your
+                        local
+                        news</a>
+                </div>
+                <div class="options"><i class="fas fa-city"></i><a class="options-link" href="#World">&nbsp;Business</a>
+                </div>
+                <div class="options"><i class="fas fa-microchip"></i><a class="options-link"
+                        href="#">&nbsp;Technology</a>
+                </div>
+                <div class="options"><i class="fas fa-film"></i><a class="options-link" href="#">&nbsp;Entertainment</a>
+                </div>
+                <div class="options"><i class="fas fa-basketball-ball"></i><a class="options-link"
+                        href="#">&nbsp;Sports</a>
+                </div>
+                <div class="options"><i class="fas fa-flask"></i><a class="options-link" href="#">&nbsp;Science</a>
+                </div>
+                <div class="options"><i class="fas fa-dumbbell"></i><a class="options-link" href="#">&nbsp;Health</a>
+                </div>
+                <hr>
+                <div class="options"><a class="options-link" href="#">Language & Reigon <br>
+                        <h6 style="font-weight: bold;">English (India)</h6>
+                    </a></div>
+                <div class="options"><a href="#" class="options-link">Settings</a></div>
+                <div class="options"><a href="#" class="options-link">Get the Android app</a></div>
+                <div class="options"><a href="#" class="options-link">Get the iOS app</a></div>
+                <div class="options"><a href="#" class="options-link">Send Feedback</a></div>
+                <div class="options"><a href="#" class="options-link">Help</a></div>
+                <div id="bottomOpt">
+                    <div class="d-flex flex-row" style="font-size: 10px;">
+                        <a href="#" class="options-link">Privacy&nbsp;·</a>
+                        <a href="#" class="options-link">Terms&nbsp;·</a>
+                        <a href="#" class="options-link">About Google</a>
+                    </div>
                 </div>
             </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="2" style="text-decoration: none;color: black;" href="">
-            <img id="2img" src="" alt=""><br><br>
-            <h6 id="2title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="2time" class="time"></p>
+
+            <!--Body-->
+            <div class="body-div">
+                <div id="Headlines" class="heading-div">
+                    <span class="headings">
+                        <h4>Headlines</h4>
+                        <a href="#">More Headlines</a>
+                    </span>
+                </div>
+                <a id="1" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="1title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="1src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="1time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="1img" src="" alt="">
+                    </span>
+                </a>
+                <a id="2" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="2title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="2src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="2time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="2img" src="" alt="">
+                    </span>
+                </a>
+                <a id="3" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="3title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="3src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="3time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="3img" src="" alt="">
+                    </span>
+                </a>
+                <div id="India" class="heading-div">
+                    <span class="headings">
+                        <h4>India</h4>
+                        <a href="#">More India</a>
+                    </span>
+                </div>
+                <a id="4" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="4title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="4src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="4time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="4img" src="" alt="">
+                    </span>
+                </a>
+                <a id="5" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="5title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="5src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="5time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="5img" src="" alt="">
+                    </span>
+                </a>
+                <a id="6" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="6title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="6src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="6time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="6img" src="" alt="">
+                    </span>
+                </a>
+                <div id="World" class="heading-div">
+                    <span class="headings">
+                        <h4>World</h4>
+                        <a href="#">More World</a>
+                    </span>
+                </div>
+                <a id="7" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="7title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="7src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="7time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="7img" src="" alt="">
+                    </span>
+                </a>
+                <a id="8" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="8title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="8src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="8time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="8img" src="" alt="">
+                    </span>
+                </a>
+                <a id="9" class="Articles" href="">
+                    <span class="article-span">
+                        <div>
+                            <h5 id="9title"></h5>
+                            <div style="font-size: small;" class="d-flex flex-row">
+                                <p id="9src" class="source"></p>&nbsp;·&nbsp;
+                                <p id="9time" class="time"></p>
+                            </div>
+                        </div>
+                        <img style="width: 20%;" id="9img" src="" alt="">
+                    </span>
+                </a>
+            </div>
+
+            <!--Weather-->
+            <div class="weather-div">
+                <div style="border:1px solid lightgray; border-radius:10px;" class="container">
+                    <div class="d-flex flex-row" style="padding-top: 20px;">
+                        <h6>Coimbatore</h6>
+                        <i class="fas fa-crosshairs ml-auto"></i>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row">
+                        <div>
+                            Partly Cloudy <br>
+                            <h1>28° C</h1>
+                        </div>
+                        <div>
+                            <img src="images/sun.png" alt="sun" style="max-width: 170px; padding-left: 80px;">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div class="p-2">
+                            Today
+                            <br>
+                            <img src="images/sun.png" style="max-width: 30px;" alt=""><br>
+                            <b style="font-size: 13px;">29° C</b>
+                            <p style="font-size: 13px;">19° C</p>
+                        </div>
+                        <div class="p-2">
+                            Sat
+                            <br>
+                            <img src="images/sun.png" style="max-width: 30px;" alt="">
+                            <b style="font-size: 13px;">31° C</b>
+                            <p style="font-size: 13px;">19° C</p>
+                        </div>
+                        <div class="p-2">
+                            Sun
+                            <br>
+                            <img src="images/sun.png" style="max-width: 30px;" alt="">
+                            <b style="font-size: 13px;">32° C</b>
+                            <p style="font-size: 13px;">19° C</p>
+                        </div>
+                        <div class="p-2">
+                            Mon
+                            <br>
+                            <img src="images/sun.png" style="max-width: 30px;" alt="">
+                            <b style="font-size: 13px;">27° C</b>
+                            <p style="font-size: 13px;">19° C</p>
+                        </div>
+                        <div class="p-2">
+                            Tue
+                            <br>
+                            <img src="images/sun.png" style="max-width: 30px;" alt="">
+                            <b style="font-size: 13px;">26° C</b>
+                            <p style="font-size: 13px;">19° C</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row">
+                        <div class="d-flex flex-row">
+                            <a class="cfk" href="#">C</a>&nbsp;<p style="font-size: 12px;">|</p>&nbsp;
+                            <a class="cfk" href="#">F</a>&nbsp;<p style="font-size: 12px;">|</p>&nbsp;
+                            <a class="cfk" href="#">K</a>
+                        </div>
+                        <div class="ml-auto">
+                            <a style="font-size: 12px;"
+                                href="https://weather.com/weather/today/l/11.02,76.93?par=google">More
+                                on
+                                weather.com</a>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <!--Facts-->
+                <div style="background-color:#f2f2f2;padding:20px; border-radius: 4px;" class="d-flex flex-column">
+                    <div>
+                        In the news
+                    </div>
+                    <hr>
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <a class="itn" href="#">Narendra Modi</a>
+                        <a class="itn" href="#">Sonia Gandhi</a>
+                        <a class="itn" href="#">Codingmart</a>
+                        <a class="itn" href="#">Supreme Court</a>
+                        <a class="itn" href="#">Basketball</a>
+                        <a class="itn" href="#">Vandalur Zoo</a>
+                        <a class="itn" href="#">Static Electricity</a>
+                        <a class="itn" href="#">CAB</a>
+                        <a class="itn" href="#">NRC</a>
+                        <a class="itn" href="#">Hero</a>
+                    </div>
                 </div>
             </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="3" style="text-decoration: none;color: black;" href="">
-            <img id="3img" src="" alt=""><br><br>
-            <h6 id="3title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="3time" class="time"></p>
+
+            <!--Video modal button (hidden)-->
+            <button id="videoPlay1" class="btn btn-primary" style="display: none;" data-toggle="modal"
+                data-target="#videoModal"></button>
+
+            <!--movies-->
+            <div class="grid-container">
+                <div onclick="fullScreen(0)" class="item1">
+                    <iframe id="gridVideoz0" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/GhLVLy7BWIo?start=15" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(1)" class="item2">
+                    <iframe id="gridVideoz1" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/8jKgzthMymk?start=15" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(2)" class="item3">
+                    <iframe id="gridVideoz2" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/Z1x4v6yFQnQ?start=1" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(3)" class="item4">
+                    <iframe id="gridVideoz3" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/qE68PP_rVrc?start=1" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(4)" class="item5">
+                    <iframe id="gridVideoz4" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/tfdD51jV6mA?start=15" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(5)" class="item6">
+                    <iframe id="gridVideoz5" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/y1lr9mMODOg?start=15" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(6)" class="item7">
+                    <iframe id="gridVideoz6" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/R09xOG9-3Q8?start=15" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div onclick="fullScreen(7)" class="item8">
+                    <iframe id="gridVideoz7" class="gridVideos" width="100%"
+                        src="https://www.youtube.com/embed/AYUmh70yiTA?start=15" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
             </div>
-        </a>
-    </div>
 
-    <hr>
+            <!--Video play modal-->
+            <div class="modal fade" id="videoModal" role="dialog" style="width: 100% !important;">
+                <div class="modal-dialog">
 
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZxYUdjU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Headlines</a></center>
-    </div>
+                    <!-- Modal content-->
+                    <div class="modal-content" style="height : 600px;width: 600px;">
+                        <div class="modal-header">
+                            <button id="logoutmodalClose" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="videoInModal" width="100%" height="100%" src="" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
 
-    <hr>
-
-    <br><br>
-
-    <!--India-->
-    <div class="container">
-        <h5 id="India">India</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="4" style="text-decoration: none;color: black;" href="">
-            <img id="4img" src="" alt=""><br><br>
-            <h6 id="4title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="4time" class="time"></p>
                 </div>
             </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="5" style="text-decoration: none;color: black;" href="">
-            <img id="5img" src="" alt=""><br><br>
-            <h6 id="5title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="5time" class="time"></p>
+
+            <!--video play modal end-->
+
+            <div id="sqlTable-div">
+                Sql Table data
+                <table id="sqlTable">
+                    <tr>
+                        <td style="font-weight: bold;">ID</td>
+                        <td style="font-weight: bold;">Name</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="buttons-div">
+                <button class="sqlButtons btn btn-primary" data-toggle="modal" data-target="#addModal">Add</button>
+                <button class="sqlButtons btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                <button class="sqlButtons btn btn-primary" data-toggle="modal"
+                    data-target="#deleteModal">Delete</button>
+            </div>
+
+            <!--Add Modal-->
+            <div class="modal fade" id="addModal" role="dialog" style="width: 100% !important;">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button id="logoutmodalClose" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <center>
+                                <form id="addDataForm" action="/addData" method="GET">
+                                    <table>
+                                        <tr>
+                                            <td>ID : </td>
+                                            <td><input type="text" name="id" id="addId"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name : </td>
+                                            <td><input type="text" name="name" id="addName"></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" form="addDataForm" class="btn btn-primary" value="add">Add
+                                Data</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="6" style="text-decoration: none;color: black;" href="">
-            <img id="6img" src="" alt=""><br><br>
-            <h6 id="6title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="6time" class="time"></p>
+            <!--Edit Modal-->
+            <div class="modal fade" id="editModal" role="dialog" style="width: 100% !important;">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button id="logoutmodalClose" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <center>
+                                <form id="editDataForm" action="/editData" method="GET">
+                                    <table>
+                                        <tr>
+                                            <td>ID : </td>
+                                            <td><input type="text" name="id" id="editId"
+                                                    placeholder="Enter exisiting ID"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name : </td>
+                                            <td><input type="text" name="name" id="editName"></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" form="editDataForm" class="btn btn-primary" value="edit">Edit
+                                Data</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </a>
-    </div>
+            <!--Delete Modal-->
+            <div class="modal fade" id="deleteModal" role="dialog" style="width: 100% !important;">
+                <div class="modal-dialog">
 
-    <hr>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button id="logoutmodalClose" type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <center>
+                                <form id="deleteDataForm" action="/deleteData" method="GET">
+                                    <table>
+                                        <tr>
+                                            <td>ID : </td>
+                                            <td><input type="text" name="id" id="editId"
+                                                    placeholder="Enter exisiting ID"></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" form="deleteDataForm" class="btn btn-primary" value="delete">Delete
+                                Data</button>
+                        </div>
+                    </div>
 
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRE55YXpBU0FtVnVLQUFQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from India</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
-
-    <!--World-->
-    <div class="container">
-        <h5 id="World">World</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="7" style="text-decoration: none;color: black;" href="">
-            <img id="7img" src="" alt=""><br><br>
-            <h6 id="7title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="7time" class="time"></p>
                 </div>
             </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="8" style="text-decoration: none;color: black;" href="">
-            <img id="8img" src="" alt=""><br><br>
-            <h6 id="8title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="8time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="9" style="text-decoration: none;color: black;" href="">
-            <img id="9img" src="" alt=""><br><br>
-            <h6 id="9title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="9time" class="time"></p>
-                </div>
-            </div>
-        </a>
+            <!--Delete add update modal buttons end-->
+
+
+        </div>
+        <!--Main news Div end-->
+
+        <br>
+
+
+        <!--row end-->
+
+
+
     </div>
 
-    <hr>
+    <!--User Scripts-->
+    <script src="/scripts/sql.js"></script>
+    <script src="/scripts/fetchNews.js"></script>
 
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from World</a></center>
-    </div>
 
-    <hr>
+    <!--Firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
-    <br><br>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
 
-    <!--Buisness-->
-    <div class="container">
-        <h5 id="Business">Business</h5>
-    </div>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBG4DOT07h0NgydsXMCEDlGdy7UFGzzw8U",
+            authDomain: "project1-dc7e5.firebaseapp.com",
+            databaseURL: "https://project1-dc7e5.firebaseio.com",
+            projectId: "project1-dc7e5",
+            storageBucket: "project1-dc7e5.appspot.com",
+            messagingSenderId: "53512073952",
+            appId: "1:53512073952:web:c2d6f8c9eaf79519ea9685",
+            measurementId: "G-VZPTD376RX"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 
-    <div style="margin: 30px ;">
-        <a class="articles" id="10" style="text-decoration: none;color: black;" href="">
-            <img id="10img" src="" alt=""><br><br>
-            <h6 id="10title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="10time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="11" style="text-decoration: none;color: black;" href="">
-            <img id="11img" src="" alt=""><br><br>
-            <h6 id="11title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="11time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="12" style="text-decoration: none;color: black;" href="">
-            <img id="12img" src="" alt=""><br><br>
-            <h6 id="12title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="12time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Business</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
-
-    <!--Technology-->
-    <div class="container">
-        <h5 id="Tech">Technology</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="13" style="text-decoration: none;color: black;" href="">
-            <img id="13img" src="" alt=""><br><br>
-            <h6 id="13title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="13time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div style="margin: 30px ;">
-        <a class="articles" id="14" style="text-decoration: none;color: black;" href="">
-            <img id="14img" src="" alt=""><br><br>
-            <h6 id="14title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="14time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Technology</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
-
-    <!--Entertainment-->
-    <div class="container">
-        <h5 id="Ent">Entertainment</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="15" style="text-decoration: none;color: black;" href="">
-            <img id="15img" src="" alt=""><br><br>
-            <h6 id="15title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="15time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Entertainment</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
-
-    <!--Sports-->
-    <div class="container">
-        <h5 id="Sports">Sports</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="16" style="text-decoration: none;color: black;" href="">
-            <img id="16img" src="" alt=""><br><br>
-            <h6 id="16title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="16time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Sports</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
-
-    <!--Science-->
-    <div class="container">
-        <h5 id="Science">Science</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="17" style="text-decoration: none;color: black;" href="">
-            <img id="17img" src="" alt=""><br><br>
-            <h6 id="17title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="17time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Science</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
-
-    <!--Health-->
-    <div class="container">
-        <h5 id="Health">Health</h5>
-    </div>
-
-    <div style="margin: 30px ;">
-        <a class="articles" id="18" style="text-decoration: none;color: black;" href="">
-            <img id="18img" src="" alt=""><br><br>
-            <h6 id="18title"></h6>
-            <div class="container">
-                <div class="row">
-                    <i class="fas fa-clock fa-xs" style="color:gray ;"></i>&nbsp;
-                    <p id="18time" class="time"></p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <center><a
-                href="https://news.google.com/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTlRFU0FtVnVLQUFQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen">Read
-                more stories from Health</a></center>
-    </div>
-
-    <hr>
-
-    <br><br>
+    <!--Firebase JS-->
+    <script src="/scripts/firebase.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -637,182 +787,34 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
+    <!--Hover JQuery-->
+    <script src="/scripts/hoverPlay.js"></script>
 
     <!--Script-->
     <script>
-        //Search Bar
-        function openSearch() {
-            document.getElementById("searchbar").style.display = "block";
-            document.getElementById("brand").style.display = "none";
-            document.getElementById("searchIcon").style.display = "none";
-            document.getElementById("toggler").style.display = "none";
-            document.getElementById("signinz").style.display = "none";
+        function getTableData(onSuccess) {
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = () => {
+                if (request.readyState == 4 && request.status == 200) {
+                    var data = JSON.parse(request.responseText);
+                    onSuccess(data);
+                }
+            }
+            request.open('GET', '/get/table');
+            request.send();
         }
 
-        //Bring back
-        function bringback() {
-            document.getElementById("searchbar").style.display = "none";
-            document.getElementById("brand").style.display = "block";
-            document.getElementById("searchIcon").style.display = "block";
-            document.getElementById("toggler").style.display = "block";
-            document.getElementById("signinz").style.display = "block";
-        }
-
-        //Restore
-        $(document).ready(function () {
-            $(".nav-link").click(function () {
-                $(".collapse").collapse('hide');
+        function displayData(data) {
+            let table = document.getElementById("sqlTable");
+            data.forEach((row) => {
+                let rowz = table.insertRow(-1);
+                let cell1 = rowz.insertCell(0);
+                let cell2 = rowz.insertCell(1);
+                cell1.innerHTML = row.id;
+                cell2.innerHTML = row.name;
             });
-        });
-
-        //Sign-in
-        function signin() {
-            window.location.href = "https://accounts.google.com/signin/v2/identifier?passive=1209600&continue=https%3A%2F%2Fnews.google.com%2F%3Fhl%3Den-IN%26gl%3DIN%26ceid%3DIN%3Aen&followup=https%3A%2F%2Fnews.google.com%2F%3Fhl%3Den-IN%26gl%3DIN%26ceid%3DIN%3Aen&hl=en-IN&flowName=GlifWebSignIn&flowEntry=ServiceLogin";
         }
-
-        //Mobile detection
-        window.setInterval(function () {
-            /// call your function here
-            if (screen.width >= 700) {
-                window.location = "desktop.html";
-            }
-        }, 5000);
-
-        //Fetch news function
-        async function fetchNews() {
-            var url = 'https://newsapi.org/v2/top-headlines?' +
-                'country=us&' +
-                'apiKey=12ffabb2e2614914b84a71e2e18e26b8';
-            var req = new Request(url);
-            var requestObj;
-            var data;
-            await fetch(req).then(async function (response) {
-                requestObj = response.json();
-            });
-            await requestObj.then(function (jsonObj) { data = jsonObj; });
-            console.log(data);
-
-            /*Obtain Code*/
-
-            //Headlines
-            for (var i = 1; i < 4; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //India
-            for (var i = 4; i < 7; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //World
-            for (var i = 7; i < 10; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //Business
-            for (var i = 10; i < 13; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //Technology
-            for (var i = 13; i < 15; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //Entertainment
-            for (var i = 15; i <= 15; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //Sports
-            for (var i = 16; i <= 16; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //Science
-            for (var i = 17; i <= 17; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-            //Health
-            for (var i = 18; i <= 18; i++) {
-                if (data.articles[i].urlToImage == null) {
-                    document.getElementById(i.toString() + "img").setAttribute("src", "noimage.jpg");
-                }
-                else {
-                    document.getElementById(i.toString() + "img").setAttribute("src", data.articles[i].urlToImage);
-                }
-                document.getElementById(i.toString() + "title").innerHTML = data.articles[i].title;
-                document.getElementById(i.toString()).setAttribute("href", data.articles[i].url);
-                document.getElementById(i.toString() + "time").innerHTML = data.articles[i].publishedAt;
-            }
-
-        }
-
+        getTableData(displayData);
     </script>
 
 </body>

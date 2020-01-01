@@ -1,0 +1,322 @@
+
+        hr {
+            border: 0;
+            clear: both;
+            display: block;
+            width: 90%;
+            background-color: darkgray;
+            height: 1px;
+        }
+
+        #Tops {
+            box-shadow: 0px 2px 5px gray;
+        }
+
+        input [type="text"]:focus,
+        textarea:focus,
+        input:focus,
+        select:focus {
+            outline: none;
+        }
+
+        #searchbox {
+            width: 700px;
+            background-color: gainsboro;
+            opacity: 0.7;
+            border-radius: 10px;
+            padding: 0px !important;
+        }
+
+        .p-2 {
+            padding-right: 10px !important;
+        }
+
+        #appsGrid {
+            font-size: 20px;
+        }
+
+        .cfk {
+            font-size: 12px;
+            color: black;
+        }
+
+        .cfk:hover {
+            color: blue
+        }
+
+        .cfk:active {
+            font-weight: bold;
+        }
+
+        .itn {
+            font-size: 14px;
+            padding: 4px;
+            margin: 3px;
+            border: 0.6px solid darkgray;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            color: #333333;
+            text-decoration: none;
+        }
+
+        .itn:hover {
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            box-shadow: 1px 1px 1px darkgray;
+        }
+
+        .options {
+            padding: 15px;
+        }
+
+        .options:hover {
+            background: lightblue;
+            border-radius: 0px 10px 10px 0px;
+            color: blue;
+        }
+
+        .options-link {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .options-link:hover {
+            text-decoration: none;
+        }
+
+        #bottomOpt {
+            padding: 15px;
+        }
+
+        #bottomOpt:hover {
+            background-color: none !important;
+        }
+
+        .menuButtons {
+            background: none;
+            outline: none;
+        }
+
+        .menuButtons:hover {
+            background-color: lightgray;
+            border-radius: 50%;
+        }
+
+        .appsIcon {
+            max-width: 40px;
+        }
+
+        #gapps {
+            border: 1px solid lightgray;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 3px lightgray;
+        }
+
+        .newsLink {
+            text-decoration: none;
+            color: black;
+        }
+
+        .newsLink:hover {
+            text-decoration: none;
+            color: black;
+            background-color: #f2f2f2;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .show {
+            width: 0% !important;
+        }
+#menuIconDiv{
+    width: 44px;padding-top: 8px;
+}
+#logoImage{
+    width:80px; padding: 0%;
+}
+#ipad-searchbox-div{
+    background: #f2f2f2; border-radius: 25px;
+}
+#searchbarDiv{
+    padding-top: 7px;padding-left: 30px;
+}
+#searchbarSearch{
+    padding-top:5px;padding-right: 5px;
+}
+#searchInputBox{
+    background: none;border: none;user-select: none;width: 300px;
+}
+#searchBoxArrow{
+    padding-top:5px;padding-left: 5px;
+}
+#gappsIcon-div{
+    padding-top: 8px; padding-left:180px;
+}
+#gapps-icon{
+    font-size: 15px;
+}
+#userImage{
+    max-width: 60px;padding-left: 20px;
+}
+#menu{
+    width:100%;transition: width ease-in .2s;overflow: hidden;
+}
+#newsBody{
+    padding-top: 80px;max-width: 50%;
+}
+.headline-title-div{
+    max-width: 600px;
+}
+.headline-title{
+    padding-left: 30px;padding-top: 30px;
+}
+.headLink{
+    padding-top: 30px;
+}
+.left-icons{
+    left: 10%;
+    display: flex;
+    flex-direction: row;
+}
+.flexGrid{
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding : 10px;
+    grid-gap: 10px;
+    background-color: #f2f2f2;
+    justify-content: space-evenly;
+    grid-column: 1 / span 3;
+    justify-items: center;
+}
+.grid-container>div{
+    background-color: rgba(115, 225, 100, 0.9);
+    padding: 10px 0;
+    width: 80%;
+}
+.videos{
+    width:100%;
+    padding: 10px;
+}
+#news{
+    display: grid;
+    grid-template-columns: 0.4fr 1.3fr 0.9fr;
+    grid-gap: 5%;
+}
+#userIconCont{
+    display: none;
+    background-color: red;
+    color: white;
+    width: auto;
+    padding: 20%;
+    border-radius: 100%;
+}
+#logout{
+    display: none;
+}
+@media only screen and (max-width: 800px) {
+    .grid-container{
+        grid-template-columns: auto auto;
+        grid-column: 1 / span 1;
+    }
+    #news{
+        grid-template-columns: auto;
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    .grid-container{
+        grid-template-columns: auto;
+        grid-column: 1 / span 1;
+    }
+    #news{
+        grid-template-columns: auto;
+    }
+  }
+  .article-span{
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+      border-radius: 25px;
+      border: 1px solid grey;
+  }
+  .Articles{
+      text-decoration: none;
+      color : black;
+      padding : 10%;
+  }
+  .Articles:hover{
+      color: black;
+  }
+  .menu-div{
+      padding-top: 10%;
+  }
+  .weather-div{
+      padding: 10%;
+  }
+  .body-div{
+      padding-top:10%;
+  }
+  .heading-div{
+      padding : 0%;
+  }
+  .headings{
+      display: flex;
+      flex-direction: row;
+  }
+  .headings>a{
+      margin-left: auto;
+  }
+.MenuBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+/*Gapps modal css*/
+.modal.left .modal-dialog,
+	.modal.right .modal-dialog {
+		position: absolute;
+        margin: auto;
+        padding-top: 80px;
+		width: 320px;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(calc(340% - 10vw), 0, 0);
+    }
+    .leftIcons-div{
+        display: flex;
+        justify-content: flex-end;
+        flex:1;
+    }
+    #logoutModalImage{
+        border-radius: 50%;
+        font-size: large;
+    }
+#videoInModal{
+    width: 100%;
+}
+#sqlTable-div{
+    grid-column: 2 / span 2;
+}
+#sqlTable{
+    border : 1px solid black;
+    border-collapse: collapse;
+    width: 10rem;
+}
+#sqlTable td{
+    padding: 10px;
+    border : 1px solid black
+}
+.buttons-div{
+    grid-column: 2 / 3;
+}
