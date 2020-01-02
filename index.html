@@ -32,6 +32,8 @@
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="/styles/desktopResponsiveCss.css">
+    <!--Script for base 64 encode-->
+    <script src="/scripts/encode.js"></script>
     <style>
         /* * {
         outline: 2px solid red;
@@ -615,6 +617,7 @@
                     <tr>
                         <td style="font-weight: bold;">ID</td>
                         <td style="font-weight: bold;">Name</td>
+                        <td style="font-weight: bold;">Image</td>
                     </tr>
                 </table>
             </div>
@@ -633,12 +636,12 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button id="logoutmodalClose" type="button" class="close"
+                            <button id="addmodalClose" type="button" class="close"
                                 data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <center>
-                                <form id="addDataForm" action="/addData" method="GET">
+                                <form id="addDataForm" action="/addData" method="POST" enctype="multipart/form-data">
                                     <table>
                                         <tr>
                                             <td>ID : </td>
@@ -647,6 +650,10 @@
                                         <tr>
                                             <td>Name : </td>
                                             <td><input type="text" name="name" id="addName"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upload Image : </td>
+                                            <td><input type="file" name="image" id="addImage" onchange="readFile(this)"></td>
                                         </tr>
                                     </table>
                                 </form>
@@ -667,12 +674,12 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button id="logoutmodalClose" type="button" class="close"
+                            <button id="editmodalClose" type="button" class="close"
                                 data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <center>
-                                <form id="editDataForm" action="/editData" method="GET">
+                                <form id="editDataForm" action="/editData" method="POST" enctype="multipart/form-data">
                                     <table>
                                         <tr>
                                             <td>ID : </td>
@@ -682,6 +689,10 @@
                                         <tr>
                                             <td>Name : </td>
                                             <td><input type="text" name="name" id="editName"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upload New Image : </td>
+                                            <td><input type="file" name="image" id="editImage"></td>
                                         </tr>
                                     </table>
                                 </form>
@@ -702,7 +713,7 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button id="logoutmodalClose" type="button" class="close"
+                            <button id="deletemodalClose" type="button" class="close"
                                 data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -806,12 +817,20 @@
 
         function displayData(data) {
             let table = document.getElementById("sqlTable");
+            var FR = new FileReader();
             data.forEach((row) => {
+                let img = document.createElement('img');
+                console.log(row.image.target);
+                img.src=row.image;
+                img.style.width="16px";
+                img.style.height="16px";
                 let rowz = table.insertRow(-1);
                 let cell1 = rowz.insertCell(0);
                 let cell2 = rowz.insertCell(1);
+                let cell3 = rowz.insertCell(2);
                 cell1.innerHTML = row.id;
                 cell2.innerHTML = row.name;
+                cell3.appendChild(img);
             });
         }
         getTableData(displayData);
