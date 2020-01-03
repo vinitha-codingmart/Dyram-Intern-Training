@@ -32,8 +32,6 @@
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="/styles/desktopResponsiveCss.css">
-    <!--Script for base 64 encode-->
-    <script src="/scripts/encode.js"></script>
     <style>
         /* * {
         outline: 2px solid red;
@@ -817,7 +815,6 @@
 
         function displayData(data) {
             let table = document.getElementById("sqlTable");
-            var FR = new FileReader();
             data.forEach((row) => {
                 let img = document.createElement('img');
                 console.log(row.image.target);
