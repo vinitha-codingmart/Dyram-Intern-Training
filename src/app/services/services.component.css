@@ -1,0 +1,45 @@
+.services {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.center-head {
+  text-align: center;
+}
+.center-head > h1 {
+  font-size: 290%;
+}
+.center-head > p {
+  font-size: 140%;
+  color: gray;
+}
+.service-image-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 5%;
+  padding: 2% 7%;
+}
+.service-image-grid > div {
+  background-image: url(../../assets/images/desk.jpeg);
+  background-blend-mode: soft-light;
+  background-color: #336bff;
+  height: 40vh;
+}
+.service-image-grid > div > h4 {
+  color: whitesmoke;
+  padding: 5%;
+}
+.service-grid-link {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 5%;
+}
+.service-grid-link:hover {
+  text-decoration: underline;
+  text-decoration-color: whitesmoke;
+}
+.service-image-grid > div:hover {
+  background-size: 80%;
+}
+.service-image {
+  margin: 0;
+  width: 100%;
+}

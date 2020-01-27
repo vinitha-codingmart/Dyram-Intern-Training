@@ -1,0 +1,20 @@
+.work-with {
+  display: grid;
+  grid-template-columns: 17% 0.1% 60%;
+  grid-gap: 10%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.companies {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+}
+.companies > img {
+  width: 80%;
+}
+.work-with > h1 {
+  text-align: right;
+}
+.work-with > hr {
+  color: blue;
+}

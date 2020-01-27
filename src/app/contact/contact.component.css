@@ -1,0 +1,28 @@
+.contact {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: darkblue;
+  color: whitesmoke;
+}
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+  padding: 1%;
+}
+a:hover {
+  color: orange;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  padding: 2% 7%;
+  grid-gap: 2%;
+}
+.contact-heads {
+  font-weight: bolder;
+}

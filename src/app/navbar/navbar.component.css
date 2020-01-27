@@ -1,0 +1,53 @@
+.head-component {
+  background-image: url("../../assets/images/desk.jpeg");
+  background-size: cover;
+  background-blend-mode: soft-light;
+  background-color: #336bff;
+  color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  padding: 3%;
+  position: sticky;
+  top: 0;
+}
+.navbar-links-div {
+  margin-left: auto;
+  color: white;
+  text-decoration: none;
+}
+.navbar-links {
+  color: whitesmoke;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: 600;
+}
+.navbar-links:hover {
+  text-decoration: underline;
+  text-decoration-color: whitesmoke;
+}
+.mission {
+  padding: 4%;
+}
+.mission > h1 {
+  font-weight: bolder;
+  font-size: 320%;
+}
+.mission > p {
+  font-size: 125%;
+  font-weight: 600;
+}
+.mission > button {
+  padding: 1% 2%;
+  background: orange;
+  color: whitesmoke;
+  border: none;
+  font-size: 120%;
+  font-weight: 600;
+}
+.mission > button:hover {
+  background: darkorange;
+  cursor: pointer;
+}

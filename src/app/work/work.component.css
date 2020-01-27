@@ -1,0 +1,48 @@
+.work-header {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.work-header > h4 {
+  font-size: 250%;
+}
+.work-header > p {
+  font-size: 140%;
+  color: gray;
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 5%;
+  grid-gap: 2%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.work-grid > a {
+  text-decoration: none;
+  box-shadow: 0px 0px 7px 0px gray;
+  padding: 2%;
+}
+.work-grid > a:hover {
+  box-shadow: 0px 0px 7px 2px gray;
+}
+.work-tag {
+  padding: 2%;
+  background: blue;
+  color: whitesmoke;
+  width: 27%;
+  text-align: center;
+  font-weight: bolder;
+}
+.work-desc {
+  font-size: 170%;
+  color: black;
+  font-weight: bolder;
+  padding: 2%;
+}
+.work-explore {
+  color: orange;
+  font-weight: bolder;
+}
+.service-img {
+  width: 100%;
+}

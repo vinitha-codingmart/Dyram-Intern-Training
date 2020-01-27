@@ -1,0 +1,35 @@
+.thought {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.thought-head {
+  text-align: center;
+  font-size: 200%;
+}
+.thought-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 2%;
+  padding: 2%;
+}
+.thought-grid > a {
+  text-decoration: none;
+  box-shadow: 0px 0px 7px 0px gray;
+}
+.thought-grid > a:hover {
+  box-shadow: 0px 0px 7px 2px gray;
+}
+.thought-title {
+  color: black;
+  font-size: 200%;
+  font-weight: bolder;
+  padding: 2%;
+}
+.thought-image {
+  width: 95%;
+  padding: 2%;
+}
+.thought-learn {
+  color: orange;
+  font-weight: bolder;
+  padding: 2%;
+}
