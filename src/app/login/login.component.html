@@ -1,0 +1,31 @@
+<div class="loginDiv">
+  <form [formGroup]="profileForm" class="loginForm" (ngSubmit)="loginUser()">
+    <img
+      src="https://www.codingmart.com/wp-content/themes/codingmart/images/codingmart-logo.png"
+      alt="codingmart"
+    /><br />
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Username"
+      formControlName="name"
+    />
+    <br />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <br />
+    <button class="loginButton">Login</button>
+    <br />
+    <div class="button-div">
+      <p>New User?</p>
+      &nbsp;&nbsp;&nbsp;
+      <em><a class="sign-up" href="signup">Sign up</a></em>
+    </div>
+  </form>
+</div>

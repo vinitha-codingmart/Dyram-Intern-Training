@@ -1,0 +1,85 @@
+<div class="posts">
+  <div class="posts-nav">
+    <a href="/"
+      ><img
+        src="https://www.codingmart.com/wp-content/themes/codingmart/images/codingmart-logo.png"
+        alt="logo"
+      />
+    </a>
+    <div class="navbar-links-div">
+      <a class="navbar-links" href="userList">User List</a>
+      <a class="navbar-links" href="posts">Case Study</a>
+      <a class="navbar-links" routerLink="/login" (click)="log()">{{
+        loggedUser.validity ? "Logout" : "Login"
+      }}</a>
+      <a class="navbar-links" href="careers">Careers</a>
+    </div>
+  </div>
+
+  <!--Modal-->
+  <div>
+    <p>
+      <label class="add-post-button" for="modal-1">Add more posts</label>
+    </p>
+  </div>
+
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+      <h2>Add New Post</h2>
+      <label class="modal__close" for="modal-1"></label>
+      <br />
+      <form [formGroup]="profileForm" (ngSubmit)="addPost()">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="modal-input"
+          placeholder="Title"
+          formControlName="title"
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          name="content"
+          id="content"
+          class="modal-input"
+          placeholder="Content"
+          formControlName="content"
+        />
+        <br />
+        <br />
+        <button class="add-post-button">
+          Add Post
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="posts-div">
+    <div class="post-content">
+      <h1>Post Title</h1>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+    </div>
+    <img src="../../assets/images/desk.jpeg" alt="postimage" />
+  </div>
+  <hr />
+  <div class="posts-div">
+    <div class="post-content" *ngFor="let post of posts">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.content }}</p>
+    </div>
+  </div>
+</div>

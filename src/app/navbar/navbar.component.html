@@ -1,14 +1,17 @@
 <div class="head-component">
-  <div class="navbar">
+  <div class="navbar" (scroll)="onWindowScroll($event)">
     <img
       src="https://www.codingmart.com/wp-content/themes/codingmart/images/codingmart-logo.png"
       alt="codingmart-logo"
+      style="height: 3.5vh;"
     />
     <div class="navbar-links-div">
       <a class="navbar-links" href="#">Technology</a>
-      <a class="navbar-links" href="#">Case Study</a>
-      <a class="navbar-links" href="#">Blog</a>
-      <a class="navbar-links" href="#">Careers</a>
+      <a class="navbar-links" href="posts">Case Study</a>
+      <a class="navbar-links" routerLink="/login" (click)="log()">{{
+        loggedUser.validity ? "Logout" : "Login"
+      }}</a>
+      <a class="navbar-links" href="careers">Careers</a>
     </div>
   </div>
   <div class="mission">

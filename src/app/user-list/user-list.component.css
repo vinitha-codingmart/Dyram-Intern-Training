@@ -1,0 +1,50 @@
+.userList {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.posts-nav {
+  display: flex;
+  flex-direction: row;
+  background: darkblue;
+  padding: 3%;
+}
+.navbar-links-div {
+  margin-left: auto;
+  color: white;
+  text-decoration: none;
+}
+.navbar-links {
+  color: whitesmoke;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: 600;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.navbar-links:hover {
+  text-decoration: underline;
+  text-decoration-color: whitesmoke;
+}
+.user-content {
+  display: flex;
+  flex-direction: row;
+  padding: 1%;
+  align-items: center;
+}
+.user-content > button {
+  padding: 1%;
+  width: 10%;
+  height: 5vh;
+  border: none;
+  background: orange;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: whitesmoke;
+  font-weight: 700;
+}
+.user-content > button:hover {
+  background-color: darkorange;
+}
+.user-content > p {
+  padding: 1%;
+}

@@ -1,0 +1,25 @@
+<div class="userList">
+  <div class="posts-nav">
+    <a href="/"
+      ><img
+        src="https://www.codingmart.com/wp-content/themes/codingmart/images/codingmart-logo.png"
+        alt="logo"
+      />
+    </a>
+    <div class="navbar-links-div">
+      <a class="navbar-links" href="userList">User List</a>
+      <a class="navbar-links" href="posts">Case Study</a>
+      <a class="navbar-links" routerLink="/login" (click)="log()">{{
+        loggedUser.validity ? "Logout" : "Login"
+      }}</a>
+      <a class="navbar-links" href="careers">Careers</a>
+    </div>
+  </div>
+
+  <div class="userListDiv">
+    <div class="user-content" *ngFor="let user of userList">
+      <button>Follow</button>
+      <p>{{ user.name }}</p>
+    </div>
+  </div>
+</div>
