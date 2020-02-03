@@ -17,6 +17,9 @@ export class PostsComponent implements OnInit {
 
   loggedUser = { name: "", validity: false };
   posts = [];
+  followers = [];
+
+  uname = { name: {} };
 
   log() {
     localStorage.removeItem("loggedUser");
@@ -32,16 +35,33 @@ export class PostsComponent implements OnInit {
   }
 
   addPost() {
-    this.post.addPost(this.profileForm.value).subscribe(() => {
+    this.post.addPost(this.profileForm.value, this.uname).subscribe(() => {
       alert("Post added successfully");
       this.toggleModal();
-      this.getPost();
+      this.getFollowers();
     });
   }
 
-  getPost() {
-    this.post.getPost().subscribe(res => {
+  getFollowers() {
+    this.post.getFollowers(this.uname).subscribe(res => {
+      this.followers.push(...res);
+      this.followers.map((name, index) => {
+        this.getPost(name);
+      });
+    });
+  }
+
+  getPost(name) {
+    this.post.getPost({ name: name }).subscribe(res => {
       this.posts.push(...res);
+    });
+  }
+
+  getUserName() {
+    let data = JSON.parse(localStorage.getItem("loggedUser"));
+    this.post.getUser(data).subscribe(res => {
+      this.uname.name = res;
+      this.getFollowers();
     });
   }
 
@@ -50,7 +70,7 @@ export class PostsComponent implements OnInit {
     if (data != null) {
       this.loggedUser.name = data.name;
       this.loggedUser.validity = data.validity;
-      this.getPost();
+      this.getUserName();
     }
   }
 }

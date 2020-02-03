@@ -17,9 +17,13 @@
   </div>
 
   <div class="userListDiv">
-    <div class="user-content" *ngFor="let user of userList">
-      <button>Follow</button>
-      <p>{{ user.name }}</p>
+    <div *ngFor="let user of userList">
+      <app-user-card
+        [name]="user"
+        [followers]="followers"
+        (followEvent)="followerEventHander($event)"
+        (unfollowEvent)="unfollowerEventHander($event)"
+      ></app-user-card>
     </div>
   </div>
 </div>

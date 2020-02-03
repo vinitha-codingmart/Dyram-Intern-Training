@@ -4,7 +4,9 @@
 .posts-nav {
   display: flex;
   flex-direction: row;
-  background: darkblue;
+  background: url("../../assets/images/desk.jpeg");
+  background-color: #336bff;
+  background-blend-mode: soft-light;
   padding: 3%;
 }
 .navbar-links-div {
@@ -38,6 +40,7 @@
 }
 .add-post-button {
   padding: 1%;
+  margin: 0.17%;
   border: none;
   background: orange;
   color: whitesmoke;
@@ -47,6 +50,17 @@
 }
 .add-post-button:hover {
   background: darkorange;
+}
+
+.post-title {
+  padding: 0;
+  margin: 0;
+}
+
+.post-author {
+  text-transform: uppercase;
+  color: gray;
+  font-weight: 700;
 }
 
 .modal-input {

@@ -78,8 +78,9 @@
   <hr />
   <div class="posts-div">
     <div class="post-content" *ngFor="let post of posts">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.content }}</p>
+      <h1 class="post-title">{{ post.title }}</h1>
+      <pre class="post-author">{{ post.name }}</pre>
+      <p class="post-text">{{ post.content }}</p>
     </div>
   </div>
 </div>

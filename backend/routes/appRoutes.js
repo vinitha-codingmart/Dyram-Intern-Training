@@ -9,16 +9,30 @@ module.exports = app => {
   });
 
   app.post("/addPost", (req, res) => {
-    Posts.addPosts(req.body.title, req.body.content);
+    console.log(req.body.post.title);
+    Posts.addPosts(
+      req.body.post.title,
+      req.body.post.content,
+      req.body.user.name.name
+    );
   });
 
-  app.get("/getPost", async (req, res) => {
-    let promise = await Posts.getPosts();
-    res.json(promise);
+  app.post("/getPost", async (req, res) => {
+    let promise = await Posts.getPosts(req.body.name);
+    res.send(promise);
+  });
+
+  app.post("/getFollower", async (req, res) => {
+    let promise = await Posts.getFollowers(req.body.name.name);
+    res.send(promise);
   });
 
   app.post("/addUser", (req, res) => {
-    Users.addUsers(req.body.name, passwordHash.generate(req.body.password));
+    Users.addUsers(
+      req.body.user.name,
+      passwordHash.generate(req.body.user.password),
+      req.body.followers.followers
+    );
   });
 
   app.post("/loginUser", async (req, res) => {
@@ -28,7 +42,16 @@ module.exports = app => {
   });
 
   app.get("/getUsers", async (req, res) => {
-    let resp = await Users.getUser();
+    let resp = await Users.getUsers();
     res.send(resp);
+  });
+
+  app.post("/getUser", async (req, res) => {
+    let resp = await Users.getUserName(req.body.id);
+    res.send(resp);
+  });
+
+  app.post("/addFollower", (req, res) => {
+    Users.addFollower(req.body.followers);
   });
 };

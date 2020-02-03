@@ -20,6 +20,7 @@ import { PostsComponent } from "./posts/posts.component";
 import { ApiService } from "./_services/api.service";
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserListComponent } from './user-list/user-list.component';
     SignupComponent,
     CareerComponent,
     PostsComponent,
-    UserListComponent
+    UserListComponent,
+    UserCardComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, ReactiveFormsModule, CommonModule],
   providers: [],

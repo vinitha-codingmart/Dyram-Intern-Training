@@ -16,9 +16,15 @@ export class SignupComponent implements OnInit {
     cpassword: new FormControl("")
   });
   users = [];
+  followersList = {
+    followers: []
+  };
 
   addUser() {
-    this.user.addUser(this.profileForm.value).subscribe(() => {});
+    this.followersList.followers.push(this.profileForm.value.name);
+    this.user
+      .addUser(this.profileForm.value, this.followersList)
+      .subscribe(() => {});
   }
 
   onSubmit() {

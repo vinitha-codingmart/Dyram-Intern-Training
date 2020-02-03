@@ -7,12 +7,13 @@ const passwordHash = require("password-hash");
 
 Users = () => {};
 
-Users.addUsers = (name, pass) => {
+Users.addUsers = (name, pass, following) => {
   let usersModel = mongoose.model("Users", users);
 
   let newUser = new usersModel();
   newUser.name = name;
   newUser.password = pass;
+  newUser.following = following;
 
   newUser.save((err, save) => {
     if (save) console.log("User Added");
@@ -40,10 +41,28 @@ Users.loginUser = async (name, pass) => {
   } else console.log("Empty");
 };
 
-Users.getUser = async () => {
+Users.getUsers = async () => {
   let usersModel = mongoose.model("Users", users);
   let promise = await usersModel.find();
   return promise;
+};
+
+Users.getUserName = async id => {
+  let uid = jwt.verify(id, key.tokenKey).id;
+  let usersModel = mongoose.model("Users", users);
+  let promise = await usersModel.find({ _id: uid });
+  let name = { name: promise[0].name };
+  return name;
+};
+
+Users.addFollower = async followers => {
+  let usersModel = mongoose.model("Users", users);
+  let namez = followers[0];
+  usersModel.findOneAndUpdate(
+    { name: namez },
+    { following: followers },
+    { new: true }
+  );
 };
 
 module.exports = Users;
