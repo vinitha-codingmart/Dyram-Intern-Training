@@ -69,3 +69,12 @@
 .user-content > svg {
   margin-left: auto;
 }
+
+.header-obj {
+  padding: 2%;
+  text-align: center;
+}
+.header-obj > p {
+  color: gray;
+  padding: 0% 17%;
+}

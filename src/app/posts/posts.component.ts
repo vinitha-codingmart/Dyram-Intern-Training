@@ -29,13 +29,13 @@ export class PostsComponent implements OnInit {
 
   toggleModal() {
     let x = document.getElementById("addPostModal");
-    console.log(x.style);
+    console.log(x);
     if (x.style.display == "none") x.style.display = "block";
     if (x.style.display == "block") x.style.display = "none";
   }
 
   addPost() {
-    this.post.addPost(this.profileForm.value, this.uname).subscribe(() => {
+    this.post.addPost(this.profileForm.value, this.uname).subscribe(res => {
       alert("Post added successfully");
       this.toggleModal();
       this.getFollowers();

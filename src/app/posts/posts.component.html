@@ -8,7 +8,7 @@
     </a>
     <div class="navbar-links-div">
       <a class="navbar-links" href="userList">User List</a>
-      <a class="navbar-links" href="posts">Case Study</a>
+      <!-- <a class="navbar-links" href="posts">Case Study</a> -->
       <a class="navbar-links" routerLink="/login" (click)="log()">{{
         loggedUser.validity ? "Logout" : "Login"
       }}</a>
@@ -60,24 +60,20 @@
 
   <div class="posts-div">
     <div class="post-content">
-      <h1>Post Title</h1>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+      <h3 class="case-studies">Case Studies</h3>
+      <h1>See how we have helped clients unleash the power of technology</h1>
+      <p class="mission-text">
+        Working with organizations of all sizes of various verticles and helping
+        solve their technology problems together with them, we bring in the best
+        practices to build software products & applications that beautifully
+        scale & solve the problems of our clients to create a larger value
+        proposition.
       </p>
     </div>
     <img src="../../assets/images/desk.jpeg" alt="postimage" />
   </div>
-  <hr />
-  <div class="posts-div">
-    <div class="post-content" *ngFor="let post of posts">
+  <div class="posts-div-user">
+    <div class="post-content-user" *ngFor="let post of posts">
       <h1 class="post-title">{{ post.title }}</h1>
       <pre class="post-author">{{ post.name }}</pre>
       <p class="post-text">{{ post.content }}</p>
