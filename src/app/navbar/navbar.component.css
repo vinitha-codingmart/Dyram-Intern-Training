@@ -1,0 +1,28 @@
+.navbar-div {
+  display: flex;
+  flex-direction: column;
+}
+.navbar-div > * {
+  padding: 2%;
+  margin: 88% 2%;
+  align-items: center;
+}
+.logo {
+  height: 44px;
+  width: 44px;
+  padding: 0%;
+  margin: 0;
+}
+.middle-nav {
+  display: flex;
+  flex-direction: column;
+}
+.middle-nav > * {
+  padding: 30% 2%;
+}
+.end-nav {
+  margin-top: auto;
+}
+.end-nav > * {
+  padding: 40% 2%;
+}

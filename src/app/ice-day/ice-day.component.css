@@ -1,0 +1,105 @@
+.ice-day {
+  background: #fdf0de;
+  border-radius: 0px 25px 0px 0px;
+}
+.ice-day-div {
+  background: #fdf0de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0px 25px 0px 0px;
+}
+.offer-div {
+  display: flex;
+  flex-direction: row;
+  background: #80485b;
+  padding: 2%;
+  align-items: center;
+  margin: 13%;
+}
+.offer-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  align-items: center;
+}
+.offer-logo {
+  width: 26%;
+}
+.best-offer {
+  color: white;
+}
+.offer-button {
+  border: none;
+  background: white;
+  padding: 17%;
+  width: 170%;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.offer-button:hover {
+  background: orange;
+  color: white;
+}
+.ice-day-p {
+  font-size: large;
+  text-align: left;
+  margin: 0% 13%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ice-day-content {
+  padding: 2% 8%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.ice-day-content > * {
+  padding: 2% 5%;
+}
+.ice-img {
+  width: 13%;
+}
+.ice-rate {
+  margin-left: auto;
+  font-weight: 600;
+}
+.ice-name {
+  font-size: smaller;
+}
+.girl-img {
+  width: 49.4%;
+}
+.girl-div {
+  display: flex;
+  justify-content: center;
+}
+.blog-div {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 8%;
+  border-radius: 0 0 25px 0px;
+}
+.blog-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid #f59f02;
+  border-radius: 15px;
+}
+.blog-input {
+  padding: 5%;
+  border: none;
+}
+.blog-input:focus {
+  outline: none;
+}
+.blog-input::placeholder {
+  font-weight: 600;
+  color: black;
+}
+svg {
+  background: #f59f02;
+}

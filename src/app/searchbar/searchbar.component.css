@@ -1,0 +1,43 @@
+.searchbar-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+input[type="text"] {
+  border: none;
+}
+input[type="text"]::placeholder {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+input[type="text"]:focus {
+  outline: none;
+  border: none;
+}
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  width: 60%;
+  height: 8vh;
+  padding: 0.5%;
+  margin: 1%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
+}
+.searchbar > svg {
+  padding: 5% 2%;
+}
+.left-icons {
+  padding: 2%;
+  margin: 2% 5% 2% auto;
+}
+.searchbar-links {
+  margin: 5%;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  padding: 1% 2%;
+}
+.searchbar-links:hover {
+  color: orange;
+}

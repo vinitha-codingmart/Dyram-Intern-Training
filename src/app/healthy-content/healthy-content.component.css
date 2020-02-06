@@ -1,0 +1,36 @@
+.highlight {
+  color: orange;
+}
+.healthy-header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 1%;
+}
+.display-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 2%;
+}
+.grid-items {
+  padding: 5% 4%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  margin: 5%;
+  border-radius: 25px;
+}
+.grid-items > * {
+  padding: 2%;
+}
+.grid-items:hover {
+  background: #f15166;
+  color: #f5f3fb;
+}
+.grid-title {
+  font-weight: 700;
+}
+.grid-content {
+  font-weight: 100;
+}
+.grid-image {
+  width: 10%;
+}

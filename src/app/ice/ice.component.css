@@ -1,0 +1,62 @@
+p {
+  margin: 0;
+}
+
+.ice-div {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+.perfect-ice {
+  padding: 1%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.ice-list-head > * {
+  margin: 0;
+}
+.ice-list-head > p {
+  color: gray;
+  margin-top: 5%;
+}
+.ice-list-items {
+  display: flex;
+  flex-direction: row;
+}
+.ice-list-items > * {
+  padding: 0% 2%;
+}
+.ice-pic {
+  width: 7%;
+  height: 7vh;
+}
+.progress-bar-div {
+  padding: 5%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.progress-bar-head {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2%;
+  font-size: small;
+  font-weight: 600;
+}
+.progress-bar-percent {
+  margin-left: auto;
+}
+.progress-flex {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.read-more {
+  width: 50%;
+  margin-left: auto;
+  background: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 2px solid orange;
+  padding: 3% 7%;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: small;
+  color: orange;
+}

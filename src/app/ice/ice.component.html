@@ -1,0 +1,79 @@
+<div class="ice-div">
+  <div class="perfect-ice">
+    <h3>Perfect ice cream</h3>
+    <div class="ice-list">
+      <div class="ice-list-items">
+        <img src="../../assets//images/choc.jpg" alt="choc" class="ice-pic" />
+        <div class="ice-list-head">
+          <h4>Chocolate</h4>
+          <p>Make yourself happy</p>
+        </div>
+      </div>
+      <br />
+      <div class="ice-list-items">
+        <img src="../../assets//images/straw.jpg" alt="choc" class="ice-pic" />
+        <div class="ice-list-head">
+          <h4>Rocky Road</h4>
+          <p>This is so good</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Progress bar-->
+  <div class="progress-bar-div">
+    <h3>Top Flavors</h3>
+    <div clas="progress-bar-item">
+      <div class="progress-flex">
+        <div class="progress-content">
+          <div class="progress-bar-head">
+            <p class="progress-bar-name">Vanilla</p>
+            <p class="progress-bar-percent">{{ flavor1_percent }}%</p>
+          </div>
+          <mat-progress-bar
+            mode="determinate"
+            [value]="flavor1_percent"
+            color="accent"
+          ></mat-progress-bar>
+        </div>
+        <a href="#" class="read-more">read more</a>
+      </div>
+    </div>
+    <br />
+    <div clas="progress-bar-item">
+      <div class="progress-flex">
+        <div class="progress-content">
+          <div class="progress-bar-head">
+            <p class="progress-bar-name">Strawberry</p>
+            <p class="progress-bar-percent">{{ flavor2_percent }}%</p>
+          </div>
+          <mat-progress-bar
+            mode="determinate"
+            [value]="flavor2_percent"
+            color="warn"
+          ></mat-progress-bar>
+        </div>
+        <a href="#" class="read-more" style="border: 2px solid red;color: red;">
+          read more
+        </a>
+      </div>
+    </div>
+    <br />
+    <div clas="progress-bar-item">
+      <div class="progress-flex">
+        <div class="progress-content">
+          <div class="progress-bar-head">
+            <p class="progress-bar-name">Neopolitan</p>
+            <p class="progress-bar-percent">{{ flavor3_percent }}%</p>
+          </div>
+          <mat-progress-bar
+            mode="determinate"
+            [value]="flavor3_percent"
+            color="accent"
+          ></mat-progress-bar>
+        </div>
+        <a href="#" class="read-more">read more</a>
+      </div>
+    </div>
+  </div>
+</div>
