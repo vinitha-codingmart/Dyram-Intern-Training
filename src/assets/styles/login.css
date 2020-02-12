@@ -1,0 +1,45 @@
+.login-div {
+  display: flex;
+  justify-content: center;
+  background: url("../images//logGraf.jpg");
+  height: 100vh;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  background: black;
+  justify-content: center;
+  padding: 5%;
+  margin: 10%;
+}
+.login-form > * {
+  padding: 5%;
+  margin: 2.5%;
+}
+.login-form > input {
+  width: 84%;
+}
+.login-form > input::placeholder {
+  text-transform: uppercase;
+}
+.form-bottom-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1% 2%;
+  margin: 0;
+}
+.form-bottom-text > p {
+  margin: 0;
+  width: 50%;
+}
+.form-bottom-text > a {
+  margin-left: auto;
+}
+.login-form > button {
+  border: none;
+  cursor: pointer;
+}
+.login-form > button:hover {
+  background: lightcoral;
+}

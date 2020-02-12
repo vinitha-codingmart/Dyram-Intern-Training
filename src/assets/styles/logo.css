@@ -1,0 +1,13 @@
+.logo-text {
+  font-size: larger;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 8px;
+  text-align: center;
+}
+.logo-div {
+  background: url("../images/logo.jpg");
+  padding: 2%;
+  border-radius: 75px;
+  text-align: center;
+}

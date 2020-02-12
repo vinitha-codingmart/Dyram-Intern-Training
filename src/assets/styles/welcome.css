@@ -1,0 +1,29 @@
+.welcome-div {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: url("../images/back.jpg");
+  background-size: cover;
+  color: whitesmoke;
+  height: 100vh;
+}
+.landing-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10%;
+}
+.landing-div > * {
+  padding: 2% 10%;
+}
+.landing-content {
+  padding: 2%;
+  background: black;
+  font-size: larger;
+  width: 40%;
+  text-align: left;
+}
+.landing-content > p {
+  color: lightcoral;
+}
+.landing-content > h1 {
+  text-transform: uppercase;
+}

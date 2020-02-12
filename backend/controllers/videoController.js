@@ -11,4 +11,9 @@ Videos.addVideo = async (name, path) => {
   return promise;
 };
 
+Videos.getVideo = async () => {
+  let promise = await Video.findAll();
+  return promise;
+};
+
 module.exports = Videos;

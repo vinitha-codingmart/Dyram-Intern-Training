@@ -1,0 +1,36 @@
+.list-div {
+  padding: 2%;
+  background: url("../images/graf1.jpg");
+  background-size: cover;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100vh;
+}
+.video-container {
+  padding: 1%;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: auto auto auto auto;
+  justify-content: center;
+}
+.video-div {
+  background: white;
+}
+.video-div > h4 {
+  padding: 4% 3%;
+  margin: 0;
+}
+.title {
+  background: white;
+  width: 10%;
+  text-align: center;
+  padding: 1% 2%;
+  text-transform: uppercase;
+}
+.title > hr {
+  margin: 0;
+  padding: 0%;
+}
+.title-div {
+  display: flex;
+  justify-content: center;
+}

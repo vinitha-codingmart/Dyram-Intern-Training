@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+  background: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
+}
+.navbar-left-icons {
+  margin-left: auto;
+}
+.navbar-links {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  text-decoration: none;
+  font-size: large;
+  text-transform: uppercase;
+}
+.navbar-links:hover {
+  color: lightcoral;
+}

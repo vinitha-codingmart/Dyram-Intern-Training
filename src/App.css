@@ -10,11 +10,12 @@ p {
   flex-direction: column;
   border: 20px solid white;
   background: whitesmoke;
+  height: 50vh;
 }
 .record-div {
   display: flex;
   padding: 10%;
   justify-content: center;
   background: url("../src/assets/images/graf.jpg");
-  height: 61vh;
+  height: 42.7vh;
 }
