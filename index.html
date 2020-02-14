@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ᑕᗩᒪᒪ-ᗯIᑎ</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body onload="welcome()">
+    <div class="header">
+      <h1>
+        ᑕᗩᒪᒪ-ᗯIᑎ
+      </h1>
+    </div>
+
+    <h4><em>You :</em></h4>
+    <div id="me"></div>
+
+    <h4><em>Guest :</em></h4>
+    <div id="remote-container"></div>
+    <!-- <h4>Canvas :</h4>
+    <div id="canvas-container"></div> -->
+
+    <div class="call-cut">
+      <i
+        onclick="callCut()"
+        id="call-cut-icon"
+        class="fa fa-phone"
+        aria-hidden="true"
+      ></i>
+    </div>
+
+    <script src="scripts/AgoraRTCSDK-2.4.0.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
