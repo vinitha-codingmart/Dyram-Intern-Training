@@ -2,39 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ᑕᗩᒪᒪ-ᗯIᑎ</title>
-    <link rel="stylesheet" href="./styles/style.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
   </head>
-  <body onload="welcome()">
-    <div class="header">
-      <h1>
-        ᑕᗩᒪᒪ-ᗯIᑎ
-      </h1>
-    </div>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Video Call</title>
+        <link rel="stylesheet" href="./styles/style.css" />
 
-    <h4><em>You :</em></h4>
-    <div id="me"></div>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+      </head>
+      <body>
+        <div class="header">
+          <h1>
+            ᑕᗩᒪᒪ-ᗯIᑎ
+          </h1>
+        </div>
 
-    <h4><em>Guest :</em></h4>
-    <div id="remote-container"></div>
-    <!-- <h4>Canvas :</h4>
-    <div id="canvas-container"></div> -->
+        <div class="desc-grid">
+          <div class="image-desc">
+            <img src="./assets/desc.png" alt="desc" />
+          </div>
 
-    <div class="call-cut">
-      <i
-        onclick="callCut()"
-        id="call-cut-icon"
-        class="fa fa-phone"
-        aria-hidden="true"
-      ></i>
-    </div>
+          <div class="content-desc">
+            Some of your most personal moments are shared on ᑕᗩᒪᒪ-ᗯIᑎ, which is
+            why we built end-to-end encryption into the latest versions of our
+            app. When end-to-end encrypted, your messages and calls are secured
+            so only you and the person you're communicating with can read or
+            listen to them, and nobody in between, not even ᑕᗩᒪᒪ-ᗯIᑎ.
+          </div>
+        </div>
 
-    <script src="scripts/AgoraRTCSDK-2.4.0.js"></script>
-    <script src="scripts/script.js"></script>
+        <div class="input-div">
+          <input
+            type="text"
+            name="streamName"
+            id="streamName"
+            placeholder="𝑬𝒏𝒕𝒆𝒓 𝒂 𝒏𝒂𝒎𝒆 𝒇𝒐𝒓 𝒚𝒐𝒖𝒓 𝒔𝒕𝒓𝒆𝒂𝒎 (𝒆𝒙 : 𝒐𝒓𝒂𝒏𝒈𝒆-𝒃𝒂𝒏𝒂𝒏𝒂)"
+            minlength="6"
+          />
+        </div>
+
+        <div class="button-div">
+          <button class="enter-button" onclick="enterCall()">
+            start a call now
+          </button>
+        </div>
+
+        <br /><br />
+
+        <script src="scripts/AgoraRTCSDK-3.0.1.js"></script>
+        <script src="scripts/homePage.js"></script>
+      </body>
+    </html>
   </body>
 </html>

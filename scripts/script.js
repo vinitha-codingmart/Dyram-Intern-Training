@@ -34,64 +34,135 @@ function removeVideoStream(evt) {
   console.log("Remote stream is removed " + stream.getId());
 }
 
-// Client Setup
-// Defines a client for RTC
-let client = AgoraRTC.createClient({
-  mode: "live",
-  codec: "h264"
-});
+function doVideo() {
+  //Stream name
+  let streamName = localStorage.getItem("streamName");
 
-// Client Setup
-// Defines a client for Real Time Communication
-client.init(
-  "fa04cfb20f564d6284e84ccedea717a0",
-  () => console.log("AgoraRTC client initialized"),
-  handleFail
-);
+  var rtc = {
+    client: null,
+    joined: false,
+    published: false,
+    localStream: null,
+    remoteStreams: [],
+    params: {},
+    streamName: streamName
+  };
 
-//Stream name
-const streamName = "dyram-call";
+  // Client Setup
+  // Defines a client for RTC
+  rtc.client = AgoraRTC.createClient({
+    mode: "live",
+    codec: "h264"
+  });
 
-// The client joins the channel
-client.join(
-  null,
-  streamName,
-  null,
-  uid => {
-    // Stream object associated with your web cam is initialized
-    let localStream = AgoraRTC.createStream({
-      streamID: uid,
-      audio: false,
-      video: true,
-      screen: false
-    });
+  // Client Setup
+  // Defines a client for Real Time Communication
+  rtc.client.init(
+    "fa04cfb20f564d6284e84ccedea717a0",
+    () => {
+      console.log("AgoraRTC client initialized");
+      rtc.client.join(
+        null,
+        rtc.streamName,
+        null,
+        uid => {
+          // Stream object associated with your web cam is initialized
+          let localStream = AgoraRTC.createStream({
+            streamID: uid,
+            audio: true,
+            video: true,
+            screen: false
+          });
 
-    // Associates the stream to the client
-    localStream.init(function() {
-      //Plays the localVideo
-      localStream.play("me");
+          // Associates the stream to the client
+          localStream.init(function() {
+            //Plays the localVideo
+            localStream.play("me");
 
-      //Publishes the stream to the channel
-      client.publish(localStream, handleFail);
-    }, handleFail);
+            //Publishes the stream to the channel
+            rtc.client.publish(localStream, handleFail);
+          }, handleFail);
 
-    //When a stream is added to a channel
-    client.on("stream-added", function(evt) {
-      client.subscribe(evt.stream, handleFail);
-    });
-    //When you subscribe to a stream
-    client.on("stream-subscribed", function(evt) {
-      let stream = evt.stream;
-      addVideoStream(stream.getId());
-      stream.play(stream.getId());
-      //   addCanvas(stream.getId());
-    });
-    //When a person is removed from the stream
-    client.on("stream-removed", removeVideoStream);
-    client.on("peer-leave", removeVideoStream);
-  },
-  handleFail
-);
+          //When a stream is added to a channel
+          rtc.client.on("stream-added", async function(evt) {
+            client.subscribe(evt.stream, handleFail);
+          });
+          //When you subscribe to a stream
+          rtc.client.on("stream-subscribed", async function(evt) {
+            let stream = evt.stream;
+            addVideoStream(stream.getId());
+            stream.play(stream.getId());
+          });
+          //When a person is removed from the stream
+          rtc.client.on("stream-removed", removeVideoStream);
+          rtc.client.on("peer-leave", removeVideoStream);
+        },
+        handleFail
+      );
+    },
+    handleFail
+  );
+
+  rtc.client.getSessionStats(stats => {
+    console.log("S E S S I O N S");
+    console.log(`Current Session Duration: ${stats.Duration}`);
+    console.log(`Current Session UserCount: ${stats.UserCount}`);
+    console.log(`Current Session SendBytes: ${stats.SendBytes}`);
+    console.log(`Current Session RecvBytes: ${stats.RecvBytes}`);
+    console.log(`Current Session SendBitrate: ${stats.SendBitrate}`);
+    console.log(`Current Session RecvBitrate: ${stats.RecvBitrate}`);
+  });
+
+  // The client joins the channel
+  rtc.client.join(
+    null,
+    rtc.streamName,
+    null,
+    uid => {
+      // Stream object associated with your web cam is initialized
+      let localStream = AgoraRTC.createStream({
+        streamID: uid,
+        audio: true,
+        video: true,
+        screen: false
+      });
+
+      // Associates the stream to the client
+      localStream.init(function() {
+        //Plays the localVideo
+        localStream.play("me");
+
+        //Publishes the stream to the channel
+        rtc.client.publish(localStream, handleFail);
+      }, handleFail);
+
+      //When a stream is added to a channel
+      rtc.client.on("stream-added", async function(evt) {
+        client.subscribe(evt.stream, handleFail);
+      });
+      //When you subscribe to a stream
+      rtc.client.on("stream-subscribed", async function(evt) {
+        let stream = evt.stream;
+        addVideoStream(stream.getId());
+        stream.play(stream.getId());
+      });
+      //When a person is removed from the stream
+      rtc.client.on("stream-removed", removeVideoStream);
+      rtc.client.on("peer-leave", removeVideoStream);
+    },
+    handleFail
+  );
+
+  rtc.client.getSessionStats(stats => {
+    console.log("S E S S I O N S");
+    console.log(`Current Session Duration: ${stats.Duration}`);
+    console.log(`Current Session UserCount: ${stats.UserCount}`);
+    console.log(`Current Session SendBytes: ${stats.SendBytes}`);
+    console.log(`Current Session RecvBytes: ${stats.RecvBytes}`);
+    console.log(`Current Session SendBitrate: ${stats.SendBitrate}`);
+    console.log(`Current Session RecvBitrate: ${stats.RecvBitrate}`);
+  });
+}
 
 /*Handle call cut */
 function callCut() {
@@ -107,5 +178,6 @@ function enterCall() {
 }
 
 function welcome() {
-  alert("Welcome to your stream...\nYour Stream Name is " + streamName);
+  // alert("Welcome to your stream...\nYour Stream Name is " + streamName);
+  doVideo();
 }

@@ -9,6 +9,10 @@ body {
   display: flex;
   justify-content: center;
 }
+.header > h1 {
+  background: yellow;
+  width: 40%;
+}
 h1 {
   display: flex;
   justify-content: center;
@@ -94,4 +98,37 @@ h4 {
   border-top: 2px solid whitesmoke;
   border-bottom: 2px solid whitesmoke;
   margin: 2%;
+}
+.input-div {
+  display: flex;
+  justify-content: center;
+}
+#streamName {
+  padding: 1% 2%;
+  font-size: larger;
+  margin: 3%;
+  width: 60%;
+}
+#streamName:focus {
+  outline: none;
+}
+.col > button {
+  border: none;
+  background: black;
+  color: yellow;
+  padding: 2% 4%;
+  cursor: pointer;
+}
+#stats-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  padding: 2%;
+  background: yellow;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0% 17%;
+  color: black;
+  font-size: large;
 }
