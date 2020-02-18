@@ -1,0 +1,36 @@
+.welcome-div {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  overflow: hidden;
+}
+.header-div {
+  margin: 2%;
+}
+.links {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: large;
+  transition: all ease-in-out 0.3s;
+}
+.links:hover {
+  color: darkred;
+}
+.input-form {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+  padding: 2%;
+  background: lightgray;
+  color: black;
+  align-items: center;
+}
+#channel {
+  padding: 1%;
+  width: 38%;
+}
+#channel:focus {
+  outline: none;
+}
+#channel::placeholder {
+  text-transform: uppercase;
+}
