@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import AgoraRTC from "agora-rtc-sdk";
+import StripeCheckout from "react-stripe-checkout";
+import Axios from "axios";
+import Modal from "react-responsive-modal";
 
 import "../styles/canvas.css";
 import Navbar from "./Navbar";
-import Axios from "axios";
 
 export class Meeting extends Component {
   constructor(props) {
@@ -18,7 +20,8 @@ export class Meeting extends Component {
       displayMode: "pip",
       streamList: [],
       readyState: false,
-      stats: {}
+      stats: {},
+      openz: false
     };
   }
 
@@ -57,9 +60,9 @@ export class Meeting extends Component {
 
   componentDidMount() {
     /*Timeout */
-    // setTimeout(() => {
-    //   this.endCall();
-    // }, 5000);
+    setTimeout(() => {
+      this.onOpenModal();
+    }, 5000);
   }
 
   componentDidUpdate() {
@@ -265,6 +268,24 @@ export class Meeting extends Component {
     });
   };
 
+  onOpenModal = () => {
+    this.setState({ openz: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ openz: false });
+  };
+
+  handleToken = token => {
+    Axios.post("http://localhost:3031/checkout", {
+      token
+    }).then(res => {
+      console.log(res.data);
+      if (res.data.status === "done") this.onCloseModal();
+      else window.location.href = "/";
+    });
+  };
+
   render() {
     const style = {
       display: "grid",
@@ -274,6 +295,7 @@ export class Meeting extends Component {
       gridTemplateRows: "repeat(12, auto)",
       gridTemplateColumns: "repeat(24, auto)"
     };
+
     return (
       <div>
         <Navbar />
@@ -334,6 +356,19 @@ export class Meeting extends Component {
             }, 1000)}
           </div>
         </div>
+
+        <Modal
+          open={this.state.openz}
+          onClose={this.onCloseModal}
+          showCloseIcon={false}
+          center
+        >
+          <h2>Upgrade to premium to continue</h2>
+          <StripeCheckout
+            stripeKey="pk_test_JMmCzYWNWMY4ZIhZbFPs7KIP00qYsrzx2E"
+            token={token => this.handleToken(token)}
+          />
+        </Modal>
       </div>
     );
   }
