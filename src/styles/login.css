@@ -1,0 +1,63 @@
+.login-form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: #efefef;
+  width: 20%;
+  padding: 2%;
+  margin-left: 35%;
+}
+
+.login-form-div > * {
+  margin: 1% 2%;
+}
+
+.login-form-div > input {
+  padding: 2%;
+}
+
+.login-form-div > button {
+  padding: 2% 8%;
+  border: none;
+  background: lightgray;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: medium;
+  transition: all ease-in-out 0.3s;
+}
+
+.login-form-div > button:hover {
+  background: darkred;
+  color: white;
+}
+
+.login-form-div > input::placeholder {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.welcome-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-header > * {
+  margin: 1% 2%;
+}
+
+.redirect-div {
+  text-align: center;
+}
+
+.free-trial-div {
+  margin: 2%;
+  width: 12%;
+  background: orange;
+  padding: 1%;
+  cursor: pointer;
+}
+
+.free-trial-div:hover {
+  background: darkorange;
+}
