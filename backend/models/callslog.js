@@ -7,8 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  CallsLog.associate = function(models) {
-    CallsLog.belongsTo(models.CallUsers);
-  };
+  CallsLog.associate = function(models) {};
   return CallsLog;
 };

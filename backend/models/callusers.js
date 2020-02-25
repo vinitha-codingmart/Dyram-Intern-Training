@@ -5,12 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       password: DataTypes.STRING,
-      validity: DataTypes.INTEGER
+      validity: DataTypes.BIGINT
     },
     {}
   );
   CallUsers.associate = function(models) {
-    CallUsers.hasMany(models.CallsLog);
+    CallUsers.hasMany(models.CallSubscribes);
+    CallUsers.hasOne(models.CallPlans);
   };
   return CallUsers;
 };

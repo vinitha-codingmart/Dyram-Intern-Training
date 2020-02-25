@@ -5,7 +5,8 @@ module.exports = app => {
   //Controllers
   const Calls = require("../controllers/callController");
   const Users = require("../controllers/userController");
-  const Logs = require("../controllers/logController");
+  const Subs = require("../controllers/subscribeController");
+  const Plans = require("../controllers/planController");
 
   //Stripe
   const stripe = require("stripe")(
@@ -133,6 +134,53 @@ module.exports = app => {
 
   app.post("/validity", async (req, res) => {
     let resp = await Users.getUsers(
+      jwt.verify(req.body.data.id, key.tokenKey).id
+    );
+    res.send(resp);
+  });
+
+  app.post("/subscribe", async (req, res) => {
+    let resp = await Subs.addSub(
+      jwt.verify(req.body.data.id, key.tokenKey).id,
+      req.body.validity
+    );
+    res.send(resp);
+  });
+
+  app.post("/getSubs", async (req, res) => {
+    let resp = await Subs.getSub(jwt.verify(req.body.data.id, key.tokenKey).id);
+    res.send(resp);
+  });
+
+  app.post("/unsubscribe", async (req, res) => {
+    let resp = await Subs.delSub(jwt.verify(req.body.data.id, key.tokenKey).id);
+    res.send({ status: "success" });
+  });
+
+  app.post("/subValidity", async (req, res) => {
+    let resp = await Subs.getValidity(
+      jwt.verify(req.body.data.id, key.tokenKey).id
+    );
+    res.send(resp);
+  });
+
+  app.post("/getData", async (req, res) => {
+    let resp = await Subs.getData(
+      jwt.verify(req.body.data.id, key.tokenKey).id
+    );
+    res.send(resp);
+  });
+
+  app.post("/planSub", async (req, res) => {
+    let resp = await Plans.addPlans(
+      jwt.verify(req.body.data.id, key.tokenKey).id,
+      req.body.planId
+    );
+    res.send(resp);
+  });
+
+  app.post("/getPlan", async (req, res) => {
+    let resp = await Plans.getPlans(
       jwt.verify(req.body.data.id, key.tokenKey).id
     );
     res.send(resp);

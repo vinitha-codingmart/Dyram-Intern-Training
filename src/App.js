@@ -6,6 +6,8 @@ import Meeting from "./components/Meeting";
 import Welcome from "./components/Welcome";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import Plans from "./components/Plans";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
           <Route path="/" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/welcome" exact component={Welcome} />
+          <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/meeting" exact component={Meeting} />
+          <Route path="/plans" exact component={Plans} />
         </Switch>
       </div>
     </Router>

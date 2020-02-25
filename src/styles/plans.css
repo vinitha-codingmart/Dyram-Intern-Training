@@ -1,0 +1,21 @@
+.plan-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.plan-card-div {
+  text-align: center;
+  background: #efefef;
+  margin: 13% 17%;
+}
+.plan-button {
+  background: orange;
+  cursor: pointer;
+  padding: 2% 4%;
+  border: none;
+  text-transform: uppercase;
+  color: black;
+}
+.plan-button:hover {
+  background: darkorange;
+  color: whitesmoke;
+}

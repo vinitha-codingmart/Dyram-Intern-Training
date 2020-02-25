@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/welcome.css";
 import Navbar from "./Navbar";
+import Axios from "axios";
 
 export class Welcome extends Component {
   state = {
     channel: "",
     premium: "",
-    logoutDisplay: true
+    logoutDisplay: true,
+    sub: false,
+    subText: "Subscribe"
   };
 
   componentDidMount() {
@@ -16,6 +19,9 @@ export class Welcome extends Component {
     let data = JSON.parse(localStorage.getItem("userToken"));
     if (data === null) {
       this.setState({ logoutDisplay: false });
+    }
+    if (data != null) {
+      this.getSubs();
     }
   }
 
@@ -28,6 +34,47 @@ export class Welcome extends Component {
     window.location.href = "/";
   };
 
+  subscribe = e => {
+    let data = JSON.parse(localStorage.getItem("userToken"));
+    let date = new Date();
+    if (this.state.sub === false) {
+      Axios.post("http://localhost:3031/subscribe", {
+        data,
+        validity: date.setDate(date.getDate() + 7)
+      }).then(async res => {
+        await this.setState({ sub: true, subText: "Unsubscribe" });
+        localStorage.setItem("state", "done");
+        this.getSubs();
+      });
+    } else {
+      Axios.post("http://localhost:3031/unsubscribe", {
+        data
+      }).then(async res => {
+        console.log(res);
+        await this.setState({ sub: false, subText: "Subscribe" });
+        localStorage.removeItem("state");
+        this.getSubs();
+      });
+    }
+  };
+
+  getSubs = () => {
+    let data = JSON.parse(localStorage.getItem("userToken"));
+    Axios.post("http://localhost:3031/getSubs", { data }).then(res => {
+      console.log(res.data.UserId);
+      if (!res.data.UserId) this.setState({ sub: false, subText: "Subscribe" });
+      else this.setState({ sub: true, subText: "Unsubscribe" });
+    });
+  };
+
+  dashboard = e => {
+    window.location.href = "/dashboard";
+  };
+
+  plans = e => {
+    window.location.href = "/plans";
+  };
+
   render() {
     return (
       <div className="welcome-div">
@@ -38,6 +85,15 @@ export class Welcome extends Component {
         >
           <button className="logout-button" onClick={e => this.logOut(e)}>
             Logout
+          </button>
+          <button className="logout-button" onClick={e => this.subscribe(e)}>
+            {this.state.subText}
+          </button>
+          <button className="logout-button" onClick={e => this.dashboard(e)}>
+            Dashboard
+          </button>
+          <button className="logout-button" onClick={e => this.plans(e)}>
+            Plans
           </button>
         </div>
         <div className="header-div">

@@ -25,7 +25,8 @@ export class Meeting extends Component {
       stats: {},
       openz: false,
       openPremium: false,
-      validity: ""
+      validity: "",
+      plan: ""
     };
   }
 
@@ -71,6 +72,7 @@ export class Meeting extends Component {
     if (data != null) {
       console.log("P R E M I U M  U S E R");
       this.getUserValidity(data);
+      this.getPlan(data);
     } else {
       if (this.state.premium === false) {
         this.setState({ channel: "", premium: "" });
@@ -81,6 +83,15 @@ export class Meeting extends Component {
           }, 3000);
         }, 5000);
       }
+    }
+    let sub = localStorage.getItem("state");
+    if (sub === null) {
+      setTimeout(() => {
+        this.setState({ openz: true });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 3000);
+      }, 5000);
     }
   }
 
@@ -314,16 +325,51 @@ export class Meeting extends Component {
   };
 
   getUserValidity = data => {
-    Axios.post("http://localhost:3031/validity", { data }).then(res => {
+    Axios.post("http://localhost:3031/subValidity", { data }).then(res => {
       this.setState({ validity: res.data.validity });
       this.handlePayment();
     });
   };
 
   handlePayment = () => {
-    setTimeout(() => {
+    let date = new Date();
+    if (date.getDate() >= this.state.validity)
       this.setState({ openPremium: true });
-    }, this.state.validity);
+  };
+
+  getPlan = data => {
+    Axios.post("http://localhost:3031/getPlan", { data }).then(res => {
+      this.setState({ plan: res.data.plan }, () => {
+        this.setPlan();
+      });
+    });
+  };
+
+  setPlan = () => {
+    if (this.state.plan === 1) {
+      setTimeout(() => {
+        this.setState({ openz: true });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 3000);
+      }, 5000);
+    }
+    if (this.state.plan === 2) {
+      setTimeout(() => {
+        this.setState({ openz: true });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 3000);
+      }, 10000);
+    }
+    if (this.state.plan === 3) {
+      setTimeout(() => {
+        this.setState({ openz: true });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 3000);
+      }, 15000);
+    }
   };
 
   render() {

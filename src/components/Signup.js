@@ -15,10 +15,11 @@ export class Signup extends Component {
   };
 
   onSubmit = e => {
+    let date = new Date();
     Axios.post("http://localhost:3031/signUp", {
       name: this.state.name,
       pass: this.state.pass,
-      validity: 5000
+      validity: date.setDate(date.getDate() + 7)
     }).then(res => {
       this.setState({ name: "", pass: "" });
       window.location.href = "/";
