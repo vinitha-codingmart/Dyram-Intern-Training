@@ -1,6 +1,7 @@
 module.exports = app => {
   const jwt = require("jsonwebtoken");
   const key = require("../config/keys.json");
+  const nodemailer = require("nodemailer");
 
   //Controllers
   const Calls = require("../controllers/callController");
@@ -122,7 +123,8 @@ module.exports = app => {
     let resp = await Users.addUser(
       req.body.name,
       req.body.pass,
-      req.body.validity
+      req.body.validity,
+      req.body.email
     );
     res.send(resp);
   });
@@ -184,5 +186,46 @@ module.exports = app => {
       jwt.verify(req.body.data.id, key.tokenKey).id
     );
     res.send(resp);
+  });
+
+  app.post("/getUsers", async (req, res) => {
+    let resp = await Users.getUserList(
+      jwt.verify(req.body.data.id, key.tokenKey).id
+    );
+    res.send(resp);
+  });
+
+  app.post("/sendMail", async (req, res) => {
+    console.log("Sending mail", req.body);
+    let users = req.body.users;
+    let channel = req.body.channel;
+    console.log(req.body.channel);
+    if (users.length > 0) {
+      console.log("Mail sent");
+      let transporter = await nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "dyram.meyn@codingmart.com",
+          pass: "codingmart"
+        }
+      });
+      users.map(async (maps, index) => {
+        await transporter.sendMail({
+          from: "dyram.meyn@codingmart.com",
+          to: maps,
+          subject: "Sending Email using Node.js",
+          text: "That was easy!",
+          html: `<b>You have recieved an invite to join a call</b><br />
+          <hr />
+          <br />
+          <a
+            style="background:orange;padding:1%;text-decoration: none;font-size: large;"
+            href="http://localhost:3000/meeting/${channel}"
+            >Click here to join your call</a
+          ><br />
+          <p style="font-size: larger;">Your Channel Name is : <b>${channel}</b></p>`
+        });
+      });
+    } else console.log("No mail");
   });
 };

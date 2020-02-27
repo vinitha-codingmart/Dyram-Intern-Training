@@ -7,7 +7,8 @@ import StripeCheckout from "react-stripe-checkout";
 export class Signup extends Component {
   state = {
     name: "",
-    pass: ""
+    pass: "",
+    email: ""
   };
 
   change = e => {
@@ -16,10 +17,16 @@ export class Signup extends Component {
 
   onSubmit = e => {
     let date = new Date();
+    let date1 = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() + 7
+    );
     Axios.post("http://localhost:3031/signUp", {
       name: this.state.name,
       pass: this.state.pass,
-      validity: date.setDate(date.getDate() + 7)
+      validity: date1,
+      email: this.state.email
     }).then(res => {
       this.setState({ name: "", pass: "" });
       window.location.href = "/";
@@ -56,6 +63,14 @@ export class Signup extends Component {
             name="pass"
             placeholder="password"
             type="password"
+            onChange={e => this.change(e)}
+          ></input>
+          <br />
+          <input
+            id="email"
+            name="email"
+            placeholder="email"
+            type="email"
             onChange={e => this.change(e)}
           ></input>
           <br />

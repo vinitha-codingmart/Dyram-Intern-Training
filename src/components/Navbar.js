@@ -5,9 +5,11 @@ export class Navbar extends Component {
   render() {
     return (
       <div className="navbar-div">
-        <h1>
-          VideoCall<span>°</span>
-        </h1>
+        <a className="title-link" href="/welcome">
+          <h1>
+            VideoCall<span>°</span>
+          </h1>
+        </a>
       </div>
     );
   }

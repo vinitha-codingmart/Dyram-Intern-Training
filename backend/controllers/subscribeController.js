@@ -1,6 +1,6 @@
 const model = require("../models");
 const Sub = model.CallSubscribes;
-const Users = model.CallUsers;
+const Plan = model.CallPlans;
 
 Subs = () => {};
 
@@ -27,7 +27,7 @@ Subs.delSub = async id => {
     console.log("errorr", e);
     promise = e;
   }
-  console.log(promise);
+  await Plan.destroy({ where: { UserId: id } });
   return promise;
 };
 

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const CallSubscribes = sequelize.define(
     "CallSubscribes",
     {
-      validity: DataTypes.BIGINT,
+      validity: DataTypes.DATE,
       UserId: DataTypes.INTEGER
     },
     {}

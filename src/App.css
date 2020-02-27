@@ -2,3 +2,7 @@ body {
   background: white;
   color: darkred;
 }
+.links-div {
+  display: flex;
+  flex-direction: row;
+}

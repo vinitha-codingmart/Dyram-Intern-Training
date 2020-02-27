@@ -32,8 +32,8 @@ export class Meeting extends Component {
 
   UNSAFE_componentWillMount() {
     this.setState({
-      channel: this.props.location.state.channel,
-      premium: this.props.location.state.premium
+      channel: this.props.match.params.channel
+      // premium: this.props.location.state.premium
     });
     this.client = AgoraRTC.createClient({ mode: "live", codec: "h264" });
     this.client.init(this.state.appId, () => {
@@ -41,7 +41,7 @@ export class Meeting extends Component {
       this.subscribeStreamEvents();
       this.client.join(
         this.state.appId,
-        this.props.location.state.channel,
+        this.props.match.params.channel,
         undefined,
         uid => {
           console.log("User " + uid + " join channel successfully");
@@ -85,6 +85,8 @@ export class Meeting extends Component {
       }
     }
     let sub = localStorage.getItem("state");
+
+    /*This is also uncomment for plans 
     if (sub === null) {
       setTimeout(() => {
         this.setState({ openz: true });
@@ -93,6 +95,7 @@ export class Meeting extends Component {
         }, 3000);
       }, 5000);
     }
+    */
   }
 
   componentDidUpdate() {
@@ -346,30 +349,45 @@ export class Meeting extends Component {
   };
 
   setPlan = () => {
+    // if (!this.state.plan) {
+    //   setTimeout(() => {
+    //     this.setState({ openz: true });
+    //     localStorage.removeItem("state");
+    //     setTimeout(() => {
+    //       window.location.href = "/welcome";
+    //     }, 3000);
+    //   }, 2000);
+    // }
+    /*Plans ---- uncomment for plans output*/
+    /* 
     if (this.state.plan === 1) {
       setTimeout(() => {
         this.setState({ openz: true });
+        localStorage.removeItem("state");
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/welcome";
         }, 3000);
       }, 5000);
     }
     if (this.state.plan === 2) {
       setTimeout(() => {
         this.setState({ openz: true });
+        localStorage.removeItem("state");
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/welcome";
         }, 3000);
       }, 10000);
     }
     if (this.state.plan === 3) {
       setTimeout(() => {
         this.setState({ openz: true });
+        localStorage.removeItem("state");
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/welcome";
         }, 3000);
       }, 15000);
     }
+    */
   };
 
   render() {

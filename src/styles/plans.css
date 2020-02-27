@@ -19,3 +19,17 @@
   background: darkorange;
   color: whitesmoke;
 }
+.plan-content {
+  margin: 2%;
+}
+.unsub-button {
+  border: none;
+  background: none;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all ease-in-out 0.7;
+}
+.unsub-button:hover {
+  color: darkred;
+}

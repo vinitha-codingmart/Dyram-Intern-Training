@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/welcome.css";
 import Navbar from "./Navbar";
 import Axios from "axios";
+import Multiselect from "multiselect-dropdown-react";
 
 export class Welcome extends Component {
   state = {
@@ -10,7 +11,9 @@ export class Welcome extends Component {
     premium: "",
     logoutDisplay: true,
     sub: false,
-    subText: "Subscribe"
+    subText: "Subscribe",
+    users: [],
+    data: []
   };
 
   componentDidMount() {
@@ -22,8 +25,20 @@ export class Welcome extends Component {
     }
     if (data != null) {
       this.getSubs();
+      this.getUsers(data);
     }
   }
+
+  getUsers = data => {
+    Axios.post("http://localhost:3031/getUsers", { data }).then(res => {
+      console.log(res.data);
+      res.data.map((maps, index) => {
+        console.log("Array", index, ":", maps.name);
+        let obj = { name: maps.name, value: maps.email };
+        this.state.data.push(obj);
+      });
+    });
+  };
 
   change = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -75,6 +90,21 @@ export class Welcome extends Component {
     window.location.href = "/plans";
   };
 
+  handleSubmit = e => {
+    console.log("Handled", e);
+    this.setState({ users: e });
+  };
+
+  sendMail = () => {
+    console.log("Handled Mail");
+    Axios.post("http://localhost:3031/sendMail", {
+      users: this.state.users,
+      channel: this.state.channel
+    }).then(res => {
+      console.log(res.data);
+    });
+  };
+
   render() {
     return (
       <div className="welcome-div">
@@ -86,9 +116,9 @@ export class Welcome extends Component {
           <button className="logout-button" onClick={e => this.logOut(e)}>
             Logout
           </button>
-          <button className="logout-button" onClick={e => this.subscribe(e)}>
+          {/* <button className="logout-button" onClick={e => this.subscribe(e)}>
             {this.state.subText}
-          </button>
+          </button> */}
           <button className="logout-button" onClick={e => this.dashboard(e)}>
             Dashboard
           </button>
@@ -113,9 +143,8 @@ export class Welcome extends Component {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Link
             to={{
-              pathname: `/meeting`,
+              pathname: `/meeting/` + this.state.channel,
               state: {
-                channel: this.state.channel,
                 premium: this.state.premium
               }
             }}
@@ -123,6 +152,15 @@ export class Welcome extends Component {
           >
             Start Call
           </Link>
+        </div>
+        <div className="dropdown-div">
+          <Multiselect
+            options={this.state.data}
+            onSelectOptions={this.handleSubmit}
+          />
+          <button className="logout-button" onClick={this.sendMail()}>
+            Send Mail
+          </button>
         </div>
       </div>
     );

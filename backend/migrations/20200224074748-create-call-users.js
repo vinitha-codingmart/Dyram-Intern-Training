@@ -15,7 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       validity: {
-        type: Sequelize.BIGINT
+        type: Sequelize.DATE
+      },
+      email: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

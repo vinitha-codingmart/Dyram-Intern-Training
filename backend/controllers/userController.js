@@ -1,5 +1,6 @@
 const model = require("../models");
 const User = model.CallUsers;
+const Sequelize = require("sequelize");
 
 const passwordHash = require("password-hash");
 const jwt = require("jsonwebtoken");
@@ -8,11 +9,12 @@ const key = require("../config/keys.json");
 
 Users = () => {};
 
-Users.addUser = async (name, pass, validity) => {
+Users.addUser = async (name, pass, validity, email) => {
   let promise = await User.create({
     name: name,
     password: passwordHash.generate(pass),
-    validity
+    validity,
+    email
   });
   return promise;
 };
@@ -45,6 +47,15 @@ Users.loginUser = async (name, pass) => {
 
 Users.getUsers = async id => {
   let promise = await User.findOne({ where: { id } });
+  return promise;
+};
+
+Users.getUserList = async id => {
+  let Op = Sequelize.Op;
+  let promise = await User.findAll({
+    attributes: ["name", "email"],
+    where: { id: { [Op.ne]: id } }
+  });
   return promise;
 };
 

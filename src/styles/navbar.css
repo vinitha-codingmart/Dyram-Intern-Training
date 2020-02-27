@@ -4,7 +4,7 @@
   color: whitesmoke;
 }
 
-.navbar-div > h1 {
+.navbar-div > a > h1 {
   margin: 0;
   background: black;
   width: 14%;
@@ -14,8 +14,12 @@
   padding: 2%;
 }
 
-.navbar-div > h1 > span {
+.navbar-div > a > h1 > span {
   margin: 2%;
   font-size: xx-large;
   color: red;
+}
+.title-link {
+  text-decoration: none;
+  color: white;
 }
