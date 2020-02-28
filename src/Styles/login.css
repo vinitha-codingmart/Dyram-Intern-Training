@@ -1,0 +1,35 @@
+.login-form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 10%;
+}
+.form-div {
+  width: 20%;
+  margin-left: 40%;
+}
+.links {
+  text-decoration: none;
+}
+.form-div > input {
+  padding: 4%;
+}
+.form-div > input::placeholder {
+  text-transform: uppercase;
+  text-align: center;
+}
+.submit-button {
+  padding: 4%;
+  width: 40%;
+  text-transform: uppercase;
+  border: none;
+  background: black;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: all ease-in 0.25s;
+}
+.submit-button:hover {
+  color: black;
+  background: coral;
+}

@@ -1,0 +1,14 @@
+.react-logo {
+  width: 4%;
+}
+.logo-div {
+  display: flex;
+  align-items: center;
+}
+.logo-div > * {
+  padding: 1% 0.2%;
+}
+.quiz-span {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 4px;
+}
